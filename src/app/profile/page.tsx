@@ -16,8 +16,8 @@ export default function Profile() {
   return (
     <div className="min-h-screen bg-[#0f0e10] text-white font-['Manrope'] pb-32 overflow-hidden">
       {/* Background Liquid Art */}
-      <div className="absolute -top-24 -left-24 w-96 h-96 bg-[#ff89ab]/10 rounded-full blur-[120px] pointer-events-none -z-10 animate-gradient-xy"></div>
-      <div className="absolute top-1/2 -right-24 w-64 h-64 bg-[#00e3fd]/10 rounded-full blur-[100px] pointer-events-none -z-10 animate-gradient-xy"></div>
+      <div className="absolute -top-24 -left-24 w-96 h-96 bg-[#ff89ab]/10 rounded-full blur-[120px] pointer-events-none -z-10 animate-liquid-blob"></div>
+      <div className="absolute top-1/2 -right-24 w-64 h-64 bg-[#00e3fd]/10 rounded-full blur-[100px] pointer-events-none -z-10 animate-liquid-blob"></div>
 
       <header className="fixed top-0 w-full z-50 bg-[#0f0e10]/80 backdrop-blur-xl border-b border-white/5 px-6 py-4 flex justify-between items-center">
         <h1 className="text-xl font-black bg-gradient-to-r from-[#ff89ab] to-[#ffb155] bg-clip-text text-transparent font-['Plus_Jakarta_Sans']">

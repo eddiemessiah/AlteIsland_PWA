@@ -25,8 +25,8 @@ export default function Lists() {
   return (
     <div className="min-h-screen bg-[#0f0e10] text-white font-['Manrope'] pb-32 overflow-hidden relative">
       {/* Animated Liquid Background mapped across screen */}
-      <div className="absolute top-0 left-0 w-full h-[600px] bg-gradient-to-br from-[#00e3fd]/10 via-[#ff89ab]/10 to-transparent blur-[120px] pointer-events-none -z-10 animate-gradient-xy mix-blend-screen" />
-      <div className="absolute bottom-0 right-0 w-[800px] h-[500px] bg-gradient-to-tl from-[#ffb155]/10 via-[#ff89ab]/5 to-transparent blur-[100px] pointer-events-none -z-10 animate-gradient-xy mix-blend-screen -translate-y-1/2" />
+      <div className="absolute top-0 left-0 w-full h-[600px] bg-gradient-to-br from-[#00e3fd]/10 via-[#ff89ab]/10 to-transparent blur-[120px] pointer-events-none -z-10 animate-liquid-blob opacity-60" />
+      <div className="absolute bottom-0 right-0 w-[800px] h-[500px] bg-gradient-to-tl from-[#ffb155]/10 via-[#ff89ab]/5 to-transparent blur-[100px] pointer-events-none -z-10 animate-liquid-blob opacity-60 -translate-y-1/2" />
 
       <header className="fixed top-0 w-full z-50 bg-[#0f0e10]/80 backdrop-blur-xl border-b border-white/5 px-6 py-4 flex flex-col gap-4 md:hidden">
         <div className="flex justify-between items-center">

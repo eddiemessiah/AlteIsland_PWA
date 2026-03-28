@@ -130,3 +130,20 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 0.03;
   pointer-events: none;
 }
+
+@keyframes liquid-blob {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(5%, 5%, 0) scale(1.05);
+  }
+  66% {
+    transform: translate3d(-5%, 2%, 0) scale(0.95);
+  }
+}
+
+.animate-liquid-blob {
+  animation: liquid-blob 15s ease-in-out infinite;
+  will-change: transform;
+}

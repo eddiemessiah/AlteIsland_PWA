@@ -21,7 +21,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           >
             {/* Animated liquid background orb */}
             <div className="absolute inset-0 z-0 flex items-center justify-center overflow-hidden pointer-events-none">
-               <div className="w-[200vw] h-[200vw] md:w-[100vw] md:h-[100vw] rounded-full bg-gradient-to-tr from-[#ff89ab] via-[#ffb155] to-[#00e3fd] blur-[150px] opacity-30 animate-gradient-xy mix-blend-screen" />
+               <div className="w-[200vw] h-[200vw] md:w-[100vw] md:h-[100vw] rounded-full bg-gradient-to-tr from-[#ff89ab] via-[#ffb155] to-[#00e3fd] blur-[150px] opacity-30 animate-liquid-blob opacity-60" />
             </div>
 
             <motion.div 
@@ -41,7 +41,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
               
               <h1 className="text-5xl md:text-6xl font-['Plus_Jakarta_Sans'] font-black tracking-tighter mb-6 leading-[1.1]">
                 Welcome to the <br />
-                <span className="bg-gradient-to-r from-[#ff89ab] via-[#ffb155] to-[#00e3fd] bg-clip-text text-transparent animate-gradient-xy">
+                <span className="bg-gradient-to-r from-[#ff89ab] via-[#ffb155] to-[#00e3fd] bg-clip-text text-transparent animate-liquid-blob">
                   Afro Club Universe
                 </span>
               </h1>
@@ -58,7 +58,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                 onClick={() => setShowSplash(false)}
                 className="relative group overflow-hidden px-12 py-5 rounded-full bg-transparent border border-white/20 hover:border-[#00e3fd] transition-all"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-[#ff89ab] to-[#00e3fd] opacity-0 group-hover:opacity-20 transition-opacity animate-gradient-xy" />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#ff89ab] to-[#00e3fd] opacity-0 group-hover:opacity-20 transition-opacity animate-liquid-blob" />
                 <span className="relative font-['Plus_Jakarta_Sans'] font-extrabold text-lg md:text-xl text-white group-hover:text-[#00e3fd] transition-colors flex items-center gap-3">
                   <span className="w-2 h-2 rounded-full bg-[#00e3fd] animate-pulse shadow-[0_0_10px_#00e3fd]"></span>
                   Enter Experience

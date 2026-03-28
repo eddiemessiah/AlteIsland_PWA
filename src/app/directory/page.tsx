@@ -24,22 +24,22 @@ export default function Directory() {
     { id: 6, name: "Mama's Kitchen", category: "Restaurants", city: "Edinburgh, Old Town", rating: 4.6, image: "https://images.unsplash.com/photo-1478144592103-25e218a04891?w=800&q=80", featured: false },
     
     // Salons (Fixed URLs)
-    { id: 7, name: "Crown Braids", category: "Salons", city: "Berlin, Mitte", rating: 4.9, image: "https://images.unsplash.com/photo-1521590832167-7bfc17484d20?w=800&q=80", featured: false },
+    { id: 7, name: "Crown Braids", category: "Salons", city: "Berlin, Mitte", rating: 4.9, image: "https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=800&q=80", featured: false },
     { id: 8, name: "The Fade Lounge", category: "Salons", city: "Paris, Montmartre", rating: 4.8, image: "https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=800&q=80", featured: false },
-    { id: 9, name: "Roots Studio", category: "Salons", city: "London, Camden", rating: 4.7, image: "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&q=80", featured: false },
+    { id: 9, name: "Roots Studio", category: "Salons", city: "London, Camden", rating: 4.7, image: "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=800&q=80", featured: false },
     
     // Designers (Fixed URLs)
     { id: 10, name: "Afro-Chic Boutique", category: "Designers", city: "Paris, St-Germain", rating: 4.8, image: "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?w=800&q=80", featured: false },
-    { id: 11, name: "Sartorial Africa", category: "Designers", city: "Berlin, Charlottenburg", rating: 4.9, image: "https://images.unsplash.com/photo-1489987707023-af0825dad1c3?w=800&q=80", featured: false },
+    { id: 11, name: "Sartorial Africa", category: "Designers", city: "Berlin, Charlottenburg", rating: 4.9, image: "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?w=800&q=80", featured: false },
     { id: 12, name: "Nubian Threads", category: "Designers", city: "London, Shoreditch", rating: 4.7, image: "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=800&q=80", featured: false },
     
     // Beauty (Fixed URLs)
-    { id: 13, name: "Melanin Glow", category: "Beauty", city: "Berlin, Friedrichshain", rating: 4.9, image: "https://images.unsplash.com/photo-1596462502278-27bf84033e54?w=800&q=80", featured: false },
+    { id: 13, name: "Melanin Glow", category: "Beauty", city: "Berlin, Friedrichshain", rating: 4.9, image: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=800&q=80", featured: false },
     { id: 14, name: "Shea & Cocoa", category: "Beauty", city: "London, Notting Hill", rating: 4.8, image: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=800&q=80", featured: false },
-    { id: 15, name: "Desert Rose", category: "Beauty", city: "Paris, Bastille", rating: 4.7, image: "https://images.unsplash.com/photo-1590156546946-cb5afcf241c0?w=800&q=80", featured: false },
+    { id: 15, name: "Desert Rose", category: "Beauty", city: "Paris, Bastille", rating: 4.7, image: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=800&q=80", featured: false },
     
     // Creative (Fixed URLs)
-    { id: 16, name: "Rhythm & Canvas", category: "Creative", city: "Berlin, Kreuzberg", rating: 4.9, image: "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=800&q=80", featured: false },
+    { id: 16, name: "Rhythm & Canvas", category: "Creative", city: "Berlin, Kreuzberg", rating: 4.9, image: "https://images.unsplash.com/photo-1536924940846-227afb31e2a5?w=800&q=80", featured: false },
     { id: 17, name: "AfroBeats Studio", category: "Creative", city: "London, Hackney", rating: 4.8, image: "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=800&q=80", featured: false },
     { id: 18, name: "Sankofa Gallery", category: "Creative", city: "Paris, Belleville", rating: 4.9, image: "https://images.unsplash.com/photo-1536924940846-227afb31e2a5?w=800&q=80", featured: false },
   ];
@@ -49,8 +49,8 @@ export default function Directory() {
   return (
     <div className="min-h-screen bg-[#0f0e10] text-white font-['Manrope'] pb-32 overflow-hidden relative">
       {/* Animated Liquid Background mapped across screen */}
-      <div className="absolute top-0 left-0 w-[150%] h-[800px] bg-gradient-to-br from-[#ff89ab]/10 via-[#00e3fd]/10 to-[#ffb155]/10 blur-[120px] pointer-events-none -z-10 animate-gradient-xy mix-blend-screen -translate-x-1/4" />
-      <div className="absolute top-1/2 right-0 w-full h-[600px] bg-gradient-to-tl from-[#00e3fd]/10 via-[#ff89ab]/5 to-transparent blur-[100px] pointer-events-none -z-10 animate-gradient-xy mix-blend-screen" />
+      <div className="absolute top-0 left-0 w-[150%] h-[800px] bg-gradient-to-br from-[#ff89ab]/10 via-[#00e3fd]/10 to-[#ffb155]/10 blur-[120px] pointer-events-none -z-10 animate-liquid-blob opacity-60 -translate-x-1/4" />
+      <div className="absolute top-1/2 right-0 w-full h-[600px] bg-gradient-to-tl from-[#00e3fd]/10 via-[#ff89ab]/5 to-transparent blur-[100px] pointer-events-none -z-10 animate-liquid-blob opacity-60" />
 
       {/* Top Header */}
       <header className="fixed top-0 w-full z-50 bg-[#0f0e10]/80 backdrop-blur-xl border-b border-white/5 px-6 py-4 flex justify-between items-center md:hidden">
