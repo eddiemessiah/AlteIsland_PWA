@@ -2,8 +2,8 @@
 
 import { useEffect } from "react";
 import gsap from "gsap";
-import { Search, MapPin, Heart, ArrowRight, SlidersHorizontal } from "lucide-react";
-
+import { Search, MapPin, Heart, ArrowRight, SlidersHorizontal, Plus } from "lucide-react";
+import Link from "next/link";
 
 export default function Directory() {
   useEffect(() => {
@@ -24,11 +24,16 @@ export default function Directory() {
       {/* Top Header */}
       <header className="fixed top-0 w-full z-50 bg-[#0f0e10]/80 backdrop-blur-xl border-b border-white/5 px-6 py-4 flex justify-between items-center">
         <h1 className="text-xl font-black bg-gradient-to-r from-[#ff89ab] to-[#ffb155] bg-clip-text text-transparent font-['Plus_Jakarta_Sans']">
-          AlteIsland Directory
+          Directory
         </h1>
-        <div className="flex gap-4 text-white/70">
-          <Search className="w-6 h-6 hover:text-white transition-colors" />
-          <SlidersHorizontal className="w-6 h-6 hover:text-white transition-colors" />
+        <div className="flex items-center gap-4">
+          <Link href="/directory/add" className="flex items-center gap-1 bg-[#272528] px-3 py-1.5 rounded-full text-xs font-bold hover:bg-[#ff89ab] hover:text-[#0f0e10] transition-colors border border-white/10 group">
+             <Plus className="w-3 h-3 group-hover:rotate-90 transition-transform" /> Add
+          </Link>
+          <div className="flex gap-3 text-white/70">
+            <Search className="w-5 h-5 hover:text-white transition-colors cursor-pointer" />
+            <SlidersHorizontal className="w-5 h-5 hover:text-white transition-colors cursor-pointer" />
+          </div>
         </div>
       </header>
 
@@ -101,7 +106,6 @@ export default function Directory() {
         </div>
       </main>
 
-      
     </div>
   );
 }
