@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import gsap from "gsap";
 import { Search, MapPin, Heart, ArrowRight, SlidersHorizontal, Plus } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Directory() {
@@ -22,23 +23,23 @@ export default function Directory() {
     { id: 5, name: "Zanzibar Spice", category: "Restaurants", city: "London, Soho", rating: 4.9, image: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=800&q=80", featured: false },
     { id: 6, name: "Mama's Kitchen", category: "Restaurants", city: "Edinburgh, Old Town", rating: 4.6, image: "https://images.unsplash.com/photo-1478144592103-25e218a04891?w=800&q=80", featured: false },
     
-    // Salons
-    { id: 7, name: "Crown Braids", category: "Salons", city: "Berlin, Mitte", rating: 4.9, image: "https://images.unsplash.com/photo-1562322140810-519b7a466098?w=800&q=80", featured: false },
+    // Salons (Fixed URLs)
+    { id: 7, name: "Crown Braids", category: "Salons", city: "Berlin, Mitte", rating: 4.9, image: "https://images.unsplash.com/photo-1521590832167-7bfc17484d20?w=800&q=80", featured: false },
     { id: 8, name: "The Fade Lounge", category: "Salons", city: "Paris, Montmartre", rating: 4.8, image: "https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=800&q=80", featured: false },
-    { id: 9, name: "Roots Studio", category: "Salons", city: "London, Camden", rating: 4.7, image: "https://images.unsplash.com/photo-1516975080661-422fc9969197?w=800&q=80", featured: false },
+    { id: 9, name: "Roots Studio", category: "Salons", city: "London, Camden", rating: 4.7, image: "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=800&q=80", featured: false },
     
-    // Designers
+    // Designers (Fixed URLs)
     { id: 10, name: "Afro-Chic Boutique", category: "Designers", city: "Paris, St-Germain", rating: 4.8, image: "https://images.unsplash.com/photo-1581044777550-4cfa60707c03?w=800&q=80", featured: false },
-    { id: 11, name: "Sartorial Africa", category: "Designers", city: "Berlin, Charlottenburg", rating: 4.9, image: "https://images.unsplash.com/photo-1558769132-cb1fac0840f2?w=800&q=80", featured: false },
+    { id: 11, name: "Sartorial Africa", category: "Designers", city: "Berlin, Charlottenburg", rating: 4.9, image: "https://images.unsplash.com/photo-1489987707023-af0825dad1c3?w=800&q=80", featured: false },
     { id: 12, name: "Nubian Threads", category: "Designers", city: "London, Shoreditch", rating: 4.7, image: "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=800&q=80", featured: false },
     
-    // Beauty
+    // Beauty (Fixed URLs)
     { id: 13, name: "Melanin Glow", category: "Beauty", city: "Berlin, Friedrichshain", rating: 4.9, image: "https://images.unsplash.com/photo-1596462502278-27bf84033e54?w=800&q=80", featured: false },
-    { id: 14, name: "Shea & Cocoa", category: "Beauty", city: "London, Notting Hill", rating: 4.8, image: "https://images.unsplash.com/photo-1611080766336-d442db0b12eb?w=800&q=80", featured: false },
-    { id: 15, name: "Desert Rose", category: "Beauty", city: "Paris, Bastille", rating: 4.7, image: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=800&q=80", featured: false },
+    { id: 14, name: "Shea & Cocoa", category: "Beauty", city: "London, Notting Hill", rating: 4.8, image: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=800&q=80", featured: false },
+    { id: 15, name: "Desert Rose", category: "Beauty", city: "Paris, Bastille", rating: 4.7, image: "https://images.unsplash.com/photo-1590156546946-cb5afcf241c0?w=800&q=80", featured: false },
     
-    // Creative
-    { id: 16, name: "Rhythm & Canvas", category: "Creative", city: "Berlin, Kreuzberg", rating: 4.9, image: "https://images.unsplash.com/photo-1513364776144-60967d0f8ce0?w=800&q=80", featured: false },
+    // Creative (Fixed URLs)
+    { id: 16, name: "Rhythm & Canvas", category: "Creative", city: "Berlin, Kreuzberg", rating: 4.9, image: "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=800&q=80", featured: false },
     { id: 17, name: "AfroBeats Studio", category: "Creative", city: "London, Hackney", rating: 4.8, image: "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=800&q=80", featured: false },
     { id: 18, name: "Sankofa Gallery", category: "Creative", city: "Paris, Belleville", rating: 4.9, image: "https://images.unsplash.com/photo-1536924940846-227afb31e2a5?w=800&q=80", featured: false },
   ];
@@ -121,12 +122,14 @@ export default function Directory() {
                 style={{ animationDelay: `${b.id * 0.2}s` }}
               >
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0f0e10]/90 via-[#0f0e10]/30 to-transparent z-10" />
-                <img 
+                <Image 
                   src={b.image} 
-                  className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ${
+                  alt={b.name}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className={`absolute inset-0 object-cover transition-all duration-700 ${
                     b.featured ? "group-hover:scale-105" : "grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110"
                   }`}
-                  alt={b.name}
                 />
                 
                 <div className="absolute bottom-0 left-0 w-full p-6 md:p-8 z-20 flex justify-between items-end">
