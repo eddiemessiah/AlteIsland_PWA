@@ -147,3 +147,34 @@ h1, h2, h3, h4, h5, h6 {
   animation: liquid-blob 15s ease-in-out infinite;
   will-change: transform;
 }
+
+/* Festival Vibe: Hyper Speed Liquid with Strobing Colors */
+@keyframes hyper-liquid {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1) rotate(0deg); filter: hue-rotate(0deg); }
+  33% { transform: translate3d(5%, 5%, 0) scale(1.1) rotate(5deg); filter: hue-rotate(90deg); }
+  66% { transform: translate3d(-5%, 2%, 0) scale(0.9) rotate(-5deg); filter: hue-rotate(180deg); }
+}
+
+.animate-hyper-liquid {
+  animation: hyper-liquid 4s ease-in-out infinite;
+  will-change: transform, filter;
+}
+
+/* Festival Vibe: Falling Crystals */
+@keyframes crystal-fall {
+  0% { transform: translateY(-10vh) rotate(0deg) scale(0.5); opacity: 0; }
+  10% { opacity: 0.9; }
+  80% { opacity: 0.9; }
+  100% { transform: translateY(110vh) rotate(360deg) scale(1.5); opacity: 0; }
+}
+
+.crystal {
+  position: absolute;
+  top: -10%;
+  background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.2) 100%);
+  backdrop-filter: blur(8px);
+  /* Diamond Shape */
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  animation: crystal-fall linear infinite;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+}
