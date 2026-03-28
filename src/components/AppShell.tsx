@@ -98,7 +98,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
               
               <h1 className="text-5xl md:text-6xl font-['Plus_Jakarta_Sans'] font-black tracking-tighter mb-6 leading-[1.1] drop-shadow-xl text-white">
                 Welcome to the <br />
-                <span className="bg-gradient-to-r from-[#ff89ab] via-[#ffb155] to-[#00e3fd] bg-clip-text text-transparent inline-block">
+                <span className="bg-gradient-to-r from-[#ff89ab] via-[#ffb155] to-[#00e3fd] bg-clip-text text-transparent inline-block animate-text-energy">
                   Afro Club Universe
                 </span>
               </h1>
@@ -113,7 +113,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ delay: 1.5, type: "spring", bounce: 0.6 }}
                 onClick={handleEnter}
-                className="relative group overflow-hidden px-14 py-6 rounded-full bg-[#141315]/80 backdrop-blur-2xl border-2 border-[#00e3fd]/50 hover:border-[#ff89ab] transition-all shadow-[0_0_40px_rgba(0,227,253,0.3)] hover:shadow-[0_0_60px_rgba(255,137,171,0.6)]"
+                className="relative group overflow-hidden px-14 py-6 rounded-full bg-[#141315]/80 backdrop-blur-2xl border-2 transition-all shadow-[0_0_40px_rgba(0,227,253,0.3)] hover:shadow-[0_0_60px_rgba(255,137,171,0.6)] animate-border-glow"
               >
                 <video 
                   src="/festival.mp4" 
@@ -123,9 +123,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                   muted
                   playsInline
                 />
-                <span className="relative z-10 font-['Plus_Jakarta_Sans'] font-black text-xl md:text-2xl text-white group-hover:text-[#ff89ab] transition-colors flex items-center gap-3 tracking-widest uppercase drop-shadow-md">
+                <span className="relative z-10 font-['Plus_Jakarta_Sans'] font-black text-xl md:text-2xl text-white transition-colors flex items-center gap-3 tracking-widest uppercase drop-shadow-md">
                   <span className="w-3 h-3 rounded-full bg-[#00e3fd] animate-pulse shadow-[0_0_15px_#00e3fd]"></span>
-                  ENTER FESTIVAL
+                  ENTER EXPERIENCE
                 </span>
               </motion.button>
             </motion.div>
@@ -143,7 +143,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                   <video 
                     ref={videoRef}
                     src="/festival.mp4" 
-                    className="absolute inset-0 w-full h-full object-cover opacity-70 mix-blend-screen"
+                    className="absolute inset-0 w-full h-full object-cover opacity-100 contrast-[1.3] brightness-110 saturate-[1.2] mix-blend-screen"
                     autoPlay
                     loop
                     muted
@@ -155,11 +155,8 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                     initial={{ scale: 0, opacity: 1, borderWidth: "50px" }}
                     animate={{ scale: [1, 5, 20], opacity: [1, 1, 0], borderWidth: ["50px", "20px", "2px"] }}
                     transition={{ duration: 2, ease: "circIn" }}
-                    className="w-32 h-32 rounded-full border-[#ff89ab] shadow-[0_0_150px_#ff89ab] mix-blend-screen"
+                    className="w-32 h-32 rounded-full border-[#00e3fd] shadow-[0_0_150px_#00e3fd] mix-blend-screen"
                   />
-                  <h1 className="absolute z-10 text-white font-['Plus_Jakarta_Sans'] font-black text-7xl md:text-9xl tracking-widest drop-shadow-[0_0_50px_#00e3fd] animate-pulse">
-                    LET'S GO
-                  </h1>
                 </motion.div>
               )}
             </AnimatePresence>

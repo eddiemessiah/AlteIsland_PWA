@@ -43,7 +43,7 @@ export default function ShopExperience() {
             </div>
 
             <h1 className="font-['Plus_Jakarta_Sans'] font-extrabold text-5xl md:text-7xl leading-[1.1] tracking-tighter">
-              The <span className="text-[#ff89ab] italic">Digital Universe</span> of Afro Excellence.
+              The <span className="animate-text-energy inline-block transform hover:scale-105 transition-transform duration-300">Digital Universe</span> of Afro Excellence.
             </h1>
 
             <p className="text-[#aeaaad] text-xl md:text-2xl leading-relaxed max-w-2xl font-light">

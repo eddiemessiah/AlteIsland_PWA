@@ -139,3 +139,32 @@ h1, h2, h3, h4, h5, h6 {
   animation: crystal-fall linear infinite;
   box-shadow: 0 0 15px rgba(255, 137, 171, 0.4);
 }
+
+/* Vibrant Glowing Button Border */
+@keyframes border-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(0, 227, 253, 0.5), inset 0 0 10px rgba(0, 227, 253, 0.3);
+    border-color: rgba(0, 227, 253, 0.8);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(255, 137, 171, 0.8), inset 0 0 20px rgba(255, 137, 171, 0.5);
+    border-color: rgba(255, 137, 171, 1);
+  }
+}
+.animate-border-glow {
+  animation: border-glow 3s ease-in-out infinite;
+}
+
+/* Energetic Text Glow for Universe Text */
+@keyframes text-energy-glow {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(0, 227, 253, 0.8), 0 0 20px rgba(0, 227, 253, 0.5), 0 0 30px rgba(255, 137, 171, 0.3);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(255, 137, 171, 1), 0 0 40px rgba(255, 137, 171, 0.8), 0 0 50px rgba(255, 177, 85, 0.5);
+  }
+}
+.animate-text-energy {
+  animation: text-energy-glow 2s ease-in-out infinite;
+  color: #fff;
+}
