@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans, Manrope } from "next/font/google";
 import "./globals.css";
+import AppShell from "@/components/AppShell";
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -36,7 +37,7 @@ export default function RootLayout({
       <body className={`${plusJakarta.variable} ${manrope.variable} antialiased bg-[#0f0e10] text-white min-h-screen overflow-x-hidden selection:bg-[#ff89ab]/30`}>
         {/* Persistent Grain Overlay */}
         <div className="fixed inset-0 glass-grain z-[60] pointer-events-none mix-blend-overlay"></div>
-        {children}
+        <AppShell>{children}</AppShell>
       </body>
     </html>
   );

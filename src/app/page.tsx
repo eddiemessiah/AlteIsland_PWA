@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import gsap from "gsap";
-import BottomNav from "@/components/BottomNav";
+
 import { MapPin, ArrowRight } from "lucide-react";
 
 export default function ShopExperience() {
@@ -91,7 +91,7 @@ export default function ShopExperience() {
       </main>
 
       {/* Floating Bottom Navigation */}
-      <BottomNav />
+      
     </div>
   );
 }

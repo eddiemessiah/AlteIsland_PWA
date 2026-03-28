@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import gsap from "gsap";
 import { Search, MapPin, Heart, ArrowRight, SlidersHorizontal } from "lucide-react";
-import BottomNav from "@/components/BottomNav";
+
 
 export default function Directory() {
   useEffect(() => {
@@ -101,7 +101,7 @@ export default function Directory() {
         </div>
       </main>
 
-      <BottomNav />
+      
     </div>
   );
 }
