@@ -2,8 +2,7 @@
 
 import { useEffect } from "react";
 import gsap from "gsap";
-
-import { MapPin, ArrowRight } from "lucide-react";
+import { MapPin, ArrowRight, Sparkles, Globe, Map } from "lucide-react";
 
 export default function ShopExperience() {
   useEffect(() => {
@@ -32,8 +31,8 @@ export default function ShopExperience() {
       </header>
 
       {/* Main Content */}
-      <main className="relative pt-32 px-6 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <main className="relative pt-32 px-6 max-w-7xl mx-auto space-y-32">
+        <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
           {/* Narrative Column */}
           <div className="lg:col-span-7 space-y-8 hero-text">
@@ -87,11 +86,42 @@ export default function ShopExperience() {
               </form>
             </div>
           </div>
-        </div>
-      </main>
+        </section>
 
-      {/* Floating Bottom Navigation */}
-      
+        {/* Flowing Beyond Borders Section */}
+        <section className="relative overflow-hidden rounded-[3rem] p-1 md:p-1.5 animate-border-glow shadow-2xl">
+          <div className="absolute inset-0 bg-gradient-to-r from-[#ff89ab] via-[#ffb155] to-[#00e3fd] bg-flowing-gradient opacity-80" />
+          <div className="relative z-10 bg-[#0f0e10]/80 backdrop-blur-3xl rounded-[2.8rem] p-8 md:p-16 text-center space-y-8 flex flex-col items-center">
+            
+            <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[#00e3fd] to-[#ffb155] p-1 mx-auto mb-4 animate-spin" style={{ animationDuration: '8s' }}>
+              <div className="w-full h-full rounded-full bg-[#141315] flex items-center justify-center">
+                <Globe className="w-10 h-10 text-[#00e3fd] animate-pulse" />
+              </div>
+            </div>
+
+            <h2 className="text-4xl md:text-6xl font-black font-['Plus_Jakarta_Sans'] tracking-tight max-w-3xl leading-tight">
+              Flowing <br /> <span className="bg-gradient-to-r from-[#00e3fd] to-[#ffb155] bg-clip-text text-transparent">Beyond Borders</span>
+            </h2>
+            
+            <p className="text-[#aeaaad] text-lg md:text-xl font-medium max-w-2xl mx-auto leading-relaxed">
+              From Berlin to London, Paris, and the entire African Diaspora. We are uniting creators, businesses, and communities into one seamless digital experience.
+            </p>
+
+            <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
+              <span className="px-6 py-3 rounded-full bg-[#272528]/80 border border-[#00e3fd]/30 text-white font-bold text-sm flex items-center gap-2 backdrop-blur-xl">
+                <Map className="w-4 h-4 text-[#00e3fd]" /> Berlin
+              </span>
+              <span className="px-6 py-3 rounded-full bg-[#272528]/80 border border-[#ffb155]/30 text-white font-bold text-sm flex items-center gap-2 backdrop-blur-xl">
+                <Map className="w-4 h-4 text-[#ffb155]" /> London
+              </span>
+              <span className="px-6 py-3 rounded-full bg-[#272528]/80 border border-[#ff89ab]/30 text-white font-bold text-sm flex items-center gap-2 backdrop-blur-xl">
+                <Map className="w-4 h-4 text-[#ff89ab]" /> Paris
+              </span>
+            </div>
+          </div>
+        </section>
+
+      </main>
     </div>
   );
 }

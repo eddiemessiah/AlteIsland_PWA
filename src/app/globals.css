@@ -168,3 +168,30 @@ h1, h2, h3, h4, h5, h6 {
   animation: text-energy-glow 2s ease-in-out infinite;
   color: #fff;
 }
+
+/* Festival Vibe: Radial Outward Waves */
+@keyframes radial-wave-outward {
+  0% { transform: scale(0.2); opacity: 1; filter: hue-rotate(0deg); }
+  100% { transform: scale(3.5); opacity: 0; filter: hue-rotate(90deg); }
+}
+
+.animate-radial-wave {
+  animation: radial-wave-outward 4s cubic-bezier(0.1, 0.6, 0.3, 1) infinite;
+  will-change: transform, opacity, filter;
+  transform-origin: center center;
+}
+
+.delay-1000 { animation-delay: 1s; }
+.delay-2000 { animation-delay: 2s; }
+.delay-3000 { animation-delay: 3s; }
+
+/* Flowing Gradient for Shop Page Section */
+@keyframes flowing-gradient-x {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.bg-flowing-gradient {
+  background-size: 200% 200%;
+  animation: flowing-gradient-x 10s ease infinite;
+}

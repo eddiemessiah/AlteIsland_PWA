@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import BottomNav from "./BottomNav";
 import DesktopNav from "./DesktopNav";
 import PWAInstallPrompt from "./PWAInstallPrompt";
+import { Music } from "lucide-react";
 
 const FallingCrystals = () => {
   const [crystals, setCrystals] = useState<any[]>([]);
@@ -45,27 +46,45 @@ const FallingCrystals = () => {
 export default function AppShell({ children }: { children: React.ReactNode }) {
   const [showSplash, setShowSplash] = useState(true);
   const [isEntering, setIsEntering] = useState(false);
+  const [showSpotify, setShowSpotify] = useState(false);
+
   const videoRef = useRef<HTMLVideoElement>(null);
+  const oceanAudioRef = useRef<HTMLAudioElement>(null);
 
   const handleEnter = () => {
     setIsEntering(true);
     
-    const audio = new Audio("https://actions.google.com/sounds/v1/water/waves_crashing_on_rock_beach.ogg");
-    audio.volume = 0.5;
-    audio.play().catch((e) => console.log("Audio play blocked by browser:", e));
+    // Play audio synchronously on click (fixes Mobile Safari blocking un-triggered audio)
+    if (oceanAudioRef.current) {
+      oceanAudioRef.current.volume = 0.5;
+      oceanAudioRef.current.play().catch(e => console.log("Audio play blocked:", e));
+    }
 
     if (videoRef.current) {
         videoRef.current.play().catch(e => console.log(e));
     }
 
+    // End splash portal transition
     setTimeout(() => {
       setShowSplash(false);
       setIsEntering(false);
     }, 2500);
+
+    // Fade in the Spotify widget 6 seconds after hitting Enter
+    setTimeout(() => {
+      setShowSpotify(true);
+    }, 6000);
   };
 
   return (
     <>
+      {/* Hidden audio element in the DOM for mobile support */}
+      <audio 
+        ref={oceanAudioRef} 
+        src="https://actions.google.com/sounds/v1/water/waves_crashing_on_rock_beach.ogg" 
+        preload="auto" 
+      />
+
       <AnimatePresence>
         {showSplash && (
           <motion.div
@@ -74,9 +93,13 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
             transition={{ duration: 0.8, ease: "easeInOut" }}
             className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#0f0e10] overflow-hidden"
           >
-            {/* Festival Vibe: On-Brand Controlled Liquid */}
-            <div className="absolute inset-0 z-0 flex items-center justify-center overflow-hidden pointer-events-none">
-               <div className="w-[200vw] h-[200vw] md:w-[100vw] md:h-[100vw] rounded-full bg-gradient-to-tr from-[#ff89ab] via-[#ffb155] to-[#00e3fd] blur-[150px] animate-hyper-liquid mix-blend-screen" />
+            {/* Festival Vibe: Radial Outward Waves */}
+            <div className="absolute inset-0 z-0 flex items-center justify-center overflow-hidden pointer-events-none mix-blend-screen">
+               {/* 4 layered radial waves pulsing outwards */}
+               <div className="absolute w-[80vw] h-[80vw] md:w-[60vw] md:h-[60vw] rounded-full bg-gradient-to-tr from-[#ff89ab] via-[#ffb155] to-[#00e3fd] blur-[100px] animate-radial-wave" />
+               <div className="absolute w-[80vw] h-[80vw] md:w-[60vw] md:h-[60vw] rounded-full bg-gradient-to-tr from-[#00e3fd] via-[#ff89ab] to-[#ffb155] blur-[100px] animate-radial-wave delay-1000" />
+               <div className="absolute w-[80vw] h-[80vw] md:w-[60vw] md:h-[60vw] rounded-full bg-gradient-to-tr from-[#ffb155] via-[#00e3fd] to-[#ff89ab] blur-[100px] animate-radial-wave delay-2000" />
+               <div className="absolute w-[80vw] h-[80vw] md:w-[60vw] md:h-[60vw] rounded-full bg-gradient-to-tr from-[#ff89ab] via-[#ffb155] to-[#00e3fd] blur-[100px] animate-radial-wave delay-3000" />
             </div>
 
             <FallingCrystals />
@@ -170,6 +193,36 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         {children}
         <BottomNav />
         <PWAInstallPrompt />
+
+        {/* Global Spotify Music Player Overlay (Appears 6 seconds after entry) */}
+        <AnimatePresence>
+          {showSpotify && (
+            <motion.div
+              initial={{ opacity: 0, y: 50, scale: 0.9 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ type: "spring", bounce: 0.5, duration: 0.8 }}
+              className="fixed bottom-[100px] md:bottom-24 right-4 md:right-8 z-50 w-80 rounded-2xl bg-[#141315]/80 backdrop-blur-3xl border border-[#ff89ab]/30 p-2 shadow-[0_10px_40px_rgba(255,137,171,0.2)]"
+            >
+              <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-[#272528] flex items-center justify-center border border-white/10 z-10 hover:bg-[#ff89ab] transition-colors cursor-pointer" onClick={() => setShowSpotify(false)}>
+                <span className="text-white text-xs font-bold">✕</span>
+              </div>
+              <div className="flex items-center gap-2 mb-2 px-2 pt-1 text-[#00e3fd] animate-pulse">
+                <Music className="w-3 h-3" />
+                <span className="text-[10px] font-bold uppercase tracking-widest font-['Plus_Jakarta_Sans']">Now Playing in the Club</span>
+              </div>
+              <iframe 
+                style={{ borderRadius: "12px" }} 
+                src="https://open.spotify.com/embed/track/1287AbMqcpiBacZDZ6pWIP?utm_source=generator&theme=0" 
+                width="100%" 
+                height="80" 
+                frameBorder="0" 
+                allowFullScreen={false}
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                loading="lazy"
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </>
   );
