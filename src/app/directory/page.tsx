@@ -157,13 +157,13 @@ export default function Directory() {
               </div>
               
               <div className="flex gap-2">
-                <button className="flex-1 bg-white/10 hover:bg-white text-white hover:text-black text-[10px] font-black py-3 px-2 rounded-[15px] transition-colors flex items-center justify-center gap-1 uppercase tracking-widest border border-white/20 shadow-md">
+                <button className="flex-1 bg-white/10 hover:bg-white text-white hover:text-black text-[9px] font-black py-2 px-1 rounded-[15px] transition-colors flex items-center justify-center gap-1 uppercase tracking-widest border border-white/20 shadow-md">
                   <Navigation className="w-3 h-3" /> Directions
                 </button>
-                <button onClick={(e) => { e.stopPropagation(); openListModal(item.id); }} className="w-12 shrink-0 bg-white/10 hover:bg-white text-white hover:text-black rounded-[15px] flex items-center justify-center transition-colors border border-white/20 shadow-md">
+                <button onClick={(e) => { e.stopPropagation(); openListModal(item.id); }} className="w-10 shrink-0 bg-white/10 hover:bg-white text-white hover:text-black rounded-[15px] flex items-center justify-center transition-colors border border-white/20 shadow-md">
                   <Bookmark strokeWidth={2} className="w-4 h-4" />
                 </button>
-                <button className="w-12 shrink-0 bg-white/10 hover:bg-white text-white hover:text-black rounded-[15px] flex items-center justify-center transition-colors border border-white/20 shadow-md">
+                <button className="w-10 shrink-0 bg-white/10 hover:bg-white text-white hover:text-black rounded-[15px] flex items-center justify-center transition-colors border border-white/20 shadow-md">
                   <Compass strokeWidth={2} className="w-4 h-4" />
                 </button>
               </div>
