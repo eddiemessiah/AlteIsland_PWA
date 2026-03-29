@@ -1,37 +1,40 @@
 "use client";
 
-import { ShoppingBag, Compass, Flame, List, User } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Sparkles, Map, Flame, LibraryBig, Fingerprint } from "lucide-react";
 
 export default function BottomNav() {
   const pathname = usePathname();
 
   const navItems = [
-    { name: "Shop", icon: ShoppingBag, path: "/" },
-    { name: "Directory", icon: Compass, path: "/directory" },
+    { name: "Shop", icon: Sparkles, path: "/" },
+    { name: "Map", icon: Map, path: "/directory" },
     { name: "Hot", icon: Flame, path: "/hot" },
-    { name: "List", icon: List, path: "/list" },
-    { name: "Profile", icon: User, path: "/profile" },
+    { name: "Lists", icon: LibraryBig, path: "/list" },
+    { name: "ID", icon: Fingerprint, path: "/profile" },
   ];
 
   return (
-    <nav className="fixed bottom-0 w-full flex justify-around items-center z-50 pb-8 pointer-events-none md:hidden">
-      <div className="bg-[#272528]/60 backdrop-blur-2xl fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-md rounded-full px-6 py-4 border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex justify-between items-center pointer-events-auto">
+    <nav className="fixed bottom-0 w-full z-50 bg-[#141315]/80 backdrop-blur-3xl border-t border-white/5 pb-safe md:hidden">
+      <div className="flex justify-around items-center px-6 py-4">
         {navItems.map((item) => {
           const isActive = pathname === item.path;
           return (
             <Link
               key={item.name}
               href={item.path}
-              className={`flex flex-col items-center justify-center transition-all duration-300 active:scale-90 ${
-                isActive ? "text-[#00e3fd]" : "text-white/50 hover:text-white"
-              }`}
+              className="flex flex-col items-center gap-1 group relative"
             >
-              <item.icon className="w-6 h-6" strokeWidth={isActive ? 2.5 : 2} />
-              {isActive && (
-                <div className="absolute -bottom-1 w-1 h-1 bg-[#00e3fd] rounded-full shadow-[0_0_10px_#00e3fd]" />
-              )}
+              <div
+                className={`w-12 h-12 flex items-center justify-center rounded-2xl transition-all duration-300 ${
+                  isActive
+                    ? "bg-[#00e3fd] text-[#0f0e10] shadow-[0_0_20px_rgba(0,227,253,0.3)] scale-110"
+                    : "text-[#aeaaad] group-hover:text-white group-hover:bg-white/5"
+                }`}
+              >
+                <item.icon strokeWidth={isActive ? 2.5 : 1.5} className="w-5 h-5" />
+              </div>
             </Link>
           );
         })}

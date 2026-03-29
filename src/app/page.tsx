@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import { ArrowRight, MapPin, Sparkles, Navigation, Globe, Map } from "lucide-react";
+import { ArrowRight, MapPin, Sparkle, Wind, Globe2, Map } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -10,7 +10,6 @@ export default function Home() {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Basic stagger animation for cards
     gsap.fromTo(
       ".home-card",
       { y: 30, opacity: 0 },
@@ -25,7 +24,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-transparent text-white font-['Manrope'] pb-32" ref={scrollRef}>
+    <div className="min-h-screen bg-transparent text-white font-['Inter'] pb-32" ref={scrollRef}>
       
       {/* Hero Section */}
       <section className="relative pt-24 pb-12 px-6 overflow-hidden">
@@ -34,18 +33,16 @@ export default function Home() {
 
         <div className="max-w-5xl mx-auto flex justify-between items-end mb-8">
           <div>
-            <span className="text-[#ffb155] font-bold tracking-[0.2em] uppercase text-[10px] md:text-xs flex items-center gap-2 mb-3">
-              <Sparkles className="w-3 h-3" /> Diaspora Connected
+            <span className="text-[#0f0e10] bg-white font-bold tracking-[0.2em] uppercase text-[10px] md:text-xs flex items-center gap-2 mb-4 px-3 py-1 rounded-full w-fit border border-black/10">
+              <Sparkle className="w-3 h-3" /> Diaspora Connected
             </span>
-            <h1 className="font-['Inter'] text-5xl md:text-7xl font-black tracking-tighter leading-[1.1] mb-2">
+            <h1 className="font-['Inter'] text-5xl md:text-7xl font-black tracking-tighter leading-[1.1] mb-2 text-[#0f0e10]">
               The Vibe <br />
-              <span className="bg-gradient-to-r from-[#ff89ab] via-[#ffb155] to-[#00e3fd] bg-clip-text text-transparent">
-                Curated
-              </span>
+              <span className="text-white drop-shadow-lg">Curated</span>
             </h1>
           </div>
-          <div className="hidden md:flex items-center gap-2 text-[#aeaaad] font-bold">
-            <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+          <div className="hidden md:flex items-center gap-2 text-black/60 font-bold">
+            <span className="w-2 h-2 rounded-full bg-black animate-pulse"></span>
             9,402 Active Members
           </div>
         </div>
@@ -56,52 +53,52 @@ export default function Home() {
         {/* Hot Right Now Section */}
         <section className="home-card">
           <div className="flex justify-between items-end mb-6">
-            <h2 className="font-['Inter'] text-2xl font-bold">Hot Right Now</h2>
-            <Link href="/hot" className="text-[#00e3fd] text-xs font-bold flex items-center gap-1 uppercase tracking-widest hover:text-white transition-colors">
+            <h2 className="font-['Inter'] text-2xl font-black text-black">Hot Right Now</h2>
+            <Link href="/hot" className="text-black text-xs font-bold flex items-center gap-1 uppercase tracking-widest hover:text-black/70 transition-colors">
               View All <ArrowRight className="w-3 h-3" />
             </Link>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="relative h-64 md:h-80 rounded-3xl overflow-hidden group cursor-pointer border border-white/5">
+            <div className="relative h-64 md:h-80 rounded-[25px] overflow-hidden group cursor-pointer border border-white/20 shadow-2xl">
               <Image 
                 src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800&q=80" 
                 alt="Concert" 
                 fill 
                 className="object-cover transition-transform duration-700 group-hover:scale-105" 
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0f0e10] via-[#0f0e10]/40 to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
               <div className="absolute bottom-6 left-6 right-6">
                 <div className="flex justify-between items-end">
                   <div>
-                    <span className="bg-[#ffb155] text-[#0f0e10] text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded-md mb-2 inline-block">Event</span>
-                    <h3 className="font-['Inter'] text-2xl font-bold text-white mb-1 group-hover:text-[#ff89ab] transition-colors">Afro Nation Preview</h3>
-                    <p className="text-[#aeaaad] text-xs flex items-center gap-1 font-medium"><MapPin className="w-3 h-3" /> Eko Atlantic City</p>
+                    <span className="bg-[#ffb155] text-black text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded-md mb-2 inline-block shadow-lg">Event</span>
+                    <h3 className="font-['Inter'] text-2xl font-bold text-white mb-1 group-hover:text-[#ffb155] transition-colors">Afro Nation Preview</h3>
+                    <p className="text-white/80 text-xs flex items-center gap-1 font-medium"><MapPin className="w-3 h-3" /> Eko Atlantic City</p>
                   </div>
-                  <div className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center group-hover:bg-[#ff89ab] transition-colors">
-                    <ArrowRight className="w-5 h-5 text-white" />
+                  <div className="w-12 h-12 rounded-full bg-white text-black backdrop-blur-md flex items-center justify-center group-hover:bg-[#ffb155] transition-colors shadow-xl">
+                    <ArrowRight className="w-5 h-5" />
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="relative h-64 md:h-80 rounded-3xl overflow-hidden group cursor-pointer border border-white/5">
+            <div className="relative h-64 md:h-80 rounded-[25px] overflow-hidden group cursor-pointer border border-white/20 shadow-2xl">
               <Image 
                 src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80" 
                 alt="Food" 
                 fill 
                 className="object-cover transition-transform duration-700 group-hover:scale-105" 
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0f0e10] via-[#0f0e10]/40 to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
               <div className="absolute bottom-6 left-6 right-6">
                 <div className="flex justify-between items-end">
                   <div>
-                    <span className="bg-[#00e3fd] text-[#0f0e10] text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded-md mb-2 inline-block">New Spot</span>
+                    <span className="bg-[#00e3fd] text-black text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded-md mb-2 inline-block shadow-lg">New Spot</span>
                     <h3 className="font-['Inter'] text-2xl font-bold text-white mb-1 group-hover:text-[#00e3fd] transition-colors">RSVP Lagos</h3>
-                    <p className="text-[#aeaaad] text-xs flex items-center gap-1 font-medium"><MapPin className="w-3 h-3" /> Victoria Island</p>
+                    <p className="text-white/80 text-xs flex items-center gap-1 font-medium"><MapPin className="w-3 h-3" /> Victoria Island</p>
                   </div>
-                  <div className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center group-hover:bg-[#00e3fd] transition-colors">
-                    <ArrowRight className="w-5 h-5 text-white" />
+                  <div className="w-12 h-12 rounded-full bg-white text-black backdrop-blur-md flex items-center justify-center group-hover:bg-[#00e3fd] transition-colors shadow-xl">
+                    <ArrowRight className="w-5 h-5" />
                   </div>
                 </div>
               </div>
@@ -112,63 +109,63 @@ export default function Home() {
         {/* Curated Lists */}
         <section className="home-card">
           <div className="flex justify-between items-end mb-6">
-            <h2 className="font-['Inter'] text-2xl font-bold">Curated Lists</h2>
-            <Link href="/list" className="text-[#ff89ab] text-xs font-bold flex items-center gap-1 uppercase tracking-widest hover:text-white transition-colors">
+            <h2 className="font-['Inter'] text-2xl font-black text-black">Curated Lists</h2>
+            <Link href="/list" className="text-black text-xs font-bold flex items-center gap-1 uppercase tracking-widest hover:text-black/70 transition-colors">
               Explore <ArrowRight className="w-3 h-3" />
             </Link>
           </div>
           
           <div className="flex overflow-x-auto no-scrollbar gap-4 pb-4">
             {[0, 1, 2].map((idx) => (
-              <div key={idx} className="w-64 shrink-0 rounded-2xl p-5 bg-[#141315] border border-white/5 hover:bg-white/[0.02] transition-colors group cursor-pointer">
+              <div key={idx} className="w-64 shrink-0 rounded-[25px] p-5 bg-black/50 backdrop-blur-md border border-white/10 hover:bg-black/60 transition-colors group cursor-pointer shadow-xl">
                 <div className="flex -space-x-3 mb-4">
-                  <div className="w-10 h-10 rounded-full bg-[#272528] border-2 border-[#141315] flex items-center justify-center overflow-hidden">
+                  <div className="w-10 h-10 rounded-full bg-[#272528] border-2 border-black flex items-center justify-center overflow-hidden">
                     <Image src={`https://images.unsplash.com/photo-${listImages[idx][0]}?w=100&q=80`} width={40} height={40} alt="Spot" className="object-cover w-full h-full" />
                   </div>
-                  <div className="w-10 h-10 rounded-full bg-[#272528] border-2 border-[#141315] flex items-center justify-center overflow-hidden">
+                  <div className="w-10 h-10 rounded-full bg-[#272528] border-2 border-black flex items-center justify-center overflow-hidden">
                     <Image src={`https://images.unsplash.com/photo-${listImages[idx][1]}?w=100&q=80`} width={40} height={40} alt="Spot" className="object-cover w-full h-full" />
                   </div>
-                  <div className="w-10 h-10 rounded-full bg-[#ffb155] border-2 border-[#141315] flex items-center justify-center text-[#0f0e10] text-[10px] font-bold">
+                  <div className="w-10 h-10 rounded-full bg-white border-2 border-black flex items-center justify-center text-black text-[10px] font-bold shadow-lg">
                     +12
                   </div>
                 </div>
-                <h3 className="font-['Inter'] font-bold text-lg mb-1 group-hover:text-[#ffb155] transition-colors">
+                <h3 className="font-['Inter'] font-bold text-lg mb-1 group-hover:text-white text-white/90 transition-colors">
                   {idx === 0 ? 'Best Amala Joints' : idx === 1 ? 'Hidden Rooftops' : 'Late Night Bites'}
                 </h3>
-                <p className="text-[#aeaaad] text-xs">Curated by <span className="text-white">@alteking</span></p>
+                <p className="text-white/50 text-xs">Curated by <span className="text-white">@alteking</span></p>
               </div>
             ))}
           </div>
         </section>
 
         {/* Flowing Beyond Borders Section */}
-        <section className="home-card relative overflow-hidden rounded-[3rem] p-1 md:p-1.5 animate-border-glow shadow-2xl mt-8">
-          <div className="absolute inset-0 bg-gradient-to-r from-[#ff89ab] via-[#ffb155] to-[#00e3fd] bg-flowing-gradient opacity-80" />
-          <div className="relative z-10 bg-transparent/80 backdrop-blur-3xl rounded-[2.8rem] p-8 md:p-16 text-center space-y-8 flex flex-col items-center">
+        <section className="home-card relative overflow-hidden rounded-[3rem] p-1 md:p-1.5 shadow-2xl mt-8">
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-black/80 backdrop-blur-md" />
+          <div className="relative z-10 bg-black/40 backdrop-blur-3xl rounded-[2.8rem] p-8 md:p-16 text-center space-y-8 flex flex-col items-center border border-white/10">
             
-            <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[#00e3fd] to-[#ffb155] p-1 mx-auto mb-4 animate-spin" style={{ animationDuration: '8s' }}>
-              <div className="w-full h-full rounded-full bg-[#141315] flex items-center justify-center">
-                <Globe className="w-10 h-10 text-[#00e3fd] animate-pulse" />
+            <div className="w-20 h-20 rounded-full bg-white p-1 mx-auto mb-4 animate-spin shadow-[0_0_40px_rgba(255,255,255,0.4)]" style={{ animationDuration: '8s' }}>
+              <div className="w-full h-full rounded-full bg-black flex items-center justify-center border border-white/20">
+                <Globe2 strokeWidth={1.5} className="w-10 h-10 text-white animate-pulse" />
               </div>
             </div>
 
-            <h2 className="text-4xl md:text-6xl font-black font-['Inter'] tracking-tight max-w-3xl leading-tight">
-              Flowing <br /> <span className="bg-gradient-to-r from-[#00e3fd] to-[#ffb155] bg-clip-text text-transparent">Beyond Borders</span>
+            <h2 className="text-4xl md:text-6xl font-black font-['Inter'] tracking-tight max-w-3xl leading-tight text-white drop-shadow-2xl">
+              Flowing <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/50">Beyond Borders</span>
             </h2>
             
-            <p className="text-[#aeaaad] text-lg md:text-xl font-medium max-w-2xl mx-auto leading-relaxed">
+            <p className="text-white/70 text-lg md:text-xl font-medium max-w-2xl mx-auto leading-relaxed">
               From Berlin to London, Paris, and the entire African Diaspora. We are uniting creators, businesses, and communities into one seamless digital experience.
             </p>
 
             <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
-              <span className="px-6 py-3 rounded-full bg-[#272528]/80 border border-[#00e3fd]/30 text-white font-bold text-sm flex items-center gap-2 backdrop-blur-xl">
-                <Map className="w-4 h-4 text-[#00e3fd]" /> Berlin
+              <span className="px-6 py-3 rounded-full bg-black/50 border border-white/20 text-white font-bold text-sm flex items-center gap-2 backdrop-blur-xl shadow-lg">
+                <Map className="w-4 h-4 text-white" /> Berlin
               </span>
-              <span className="px-6 py-3 rounded-full bg-[#272528]/80 border border-[#ffb155]/30 text-white font-bold text-sm flex items-center gap-2 backdrop-blur-xl">
-                <Map className="w-4 h-4 text-[#ffb155]" /> London
+              <span className="px-6 py-3 rounded-full bg-black/50 border border-white/20 text-white font-bold text-sm flex items-center gap-2 backdrop-blur-xl shadow-lg">
+                <Map className="w-4 h-4 text-white" /> London
               </span>
-              <span className="px-6 py-3 rounded-full bg-[#272528]/80 border border-[#ff89ab]/30 text-white font-bold text-sm flex items-center gap-2 backdrop-blur-xl">
-                <Map className="w-4 h-4 text-[#ff89ab]" /> Paris
+              <span className="px-6 py-3 rounded-full bg-black/50 border border-white/20 text-white font-bold text-sm flex items-center gap-2 backdrop-blur-xl shadow-lg">
+                <Map className="w-4 h-4 text-white" /> Paris
               </span>
             </div>
           </div>
@@ -177,13 +174,13 @@ export default function Home() {
         {/* Explore Button CTA */}
         <section className="home-card pt-8 pb-12">
           <Link href="/directory">
-            <div className="w-full glass-panel rounded-3xl p-8 border border-[#00e3fd]/30 flex flex-col items-center justify-center group hover:bg-[#00e3fd]/5 transition-all cursor-pointer relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-r from-[#00e3fd]/0 via-[#00e3fd]/10 to-[#00e3fd]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
-              <div className="w-16 h-16 rounded-full bg-[#00e3fd]/20 text-[#00e3fd] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                <Navigation className="w-8 h-8" />
+            <div className="w-full bg-black/50 backdrop-blur-xl rounded-[3rem] p-8 border border-white/10 flex flex-col items-center justify-center group hover:bg-black/70 transition-all cursor-pointer relative overflow-hidden shadow-2xl">
+              <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+              <div className="w-20 h-20 rounded-full bg-white text-black flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-[0_0_30px_rgba(255,255,255,0.3)]">
+                <Wind strokeWidth={1.5} className="w-10 h-10" />
               </div>
-              <h2 className="font-['Inter'] text-2xl md:text-3xl font-bold mb-2 text-center text-white">Explore the Full Directory</h2>
-              <p className="text-[#aeaaad] text-sm text-center max-w-sm">Find verified businesses, read community reviews, and discover the heartbeat of the city.</p>
+              <h2 className="font-['Inter'] text-2xl md:text-3xl font-black mb-2 text-center text-white">Explore the Directory</h2>
+              <p className="text-white/50 text-sm text-center max-w-sm">Find verified businesses, read community reviews, and discover the heartbeat of the city.</p>
             </div>
           </Link>
         </section>
