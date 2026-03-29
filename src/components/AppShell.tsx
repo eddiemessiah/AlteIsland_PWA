@@ -122,7 +122,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
               <h1 className="text-5xl md:text-6xl font-['Plus_Jakarta_Sans'] font-black tracking-tighter mb-6 leading-[1.1] drop-shadow-xl text-white">
                 Welcome to the <br />
                 <span className="bg-gradient-to-r from-[#ff89ab] via-[#ffb155] to-[#00e3fd] bg-clip-text text-transparent inline-block animate-text-energy">
-                  Afro Club Universe
+                  Afro Club World
                 </span>
               </h1>
               

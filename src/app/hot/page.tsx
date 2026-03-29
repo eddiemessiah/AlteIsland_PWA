@@ -39,12 +39,12 @@ export default function HotLeaderboard() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#0f0e10] text-white font-['Manrope'] pb-32 overflow-hidden">
+    <div className="min-h-screen bg-transparent text-white font-['Manrope'] pb-32 overflow-hidden">
       {/* Dynamic Background Glow - Desert/Sunset Vibe */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#ff89ab]/10 blur-[120px] rounded-full pointer-events-none -z-10 -translate-y-1/2 translate-x-1/3" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#00e3fd]/10 blur-[100px] rounded-full pointer-events-none -z-10 translate-y-1/3 -translate-x-1/3" />
 
-      <header className="fixed top-0 w-full z-50 bg-[#0f0e10]/80 backdrop-blur-xl border-b border-white/5 px-6 py-4">
+      <header className="fixed top-0 w-full z-50 bg-transparent/80 backdrop-blur-xl border-b border-white/5 px-6 py-4">
         <h1 className="text-xl font-black bg-gradient-to-r from-[#ff89ab] to-[#ffb155] bg-clip-text text-transparent font-['Plus_Jakarta_Sans']">
           Afro Club World
         </h1>

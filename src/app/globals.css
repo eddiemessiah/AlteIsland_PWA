@@ -22,7 +22,7 @@
 
 body {
   color: var(--foreground);
-  background: var(--background);
+  background: linear-gradient(180deg, #F2863E 0%, #F0B15A 20.67%, #FFC7D5 49.04%, #DDBBEA 66.83%, #CDB6F4 75.72%, #BCB0FF 84.62%);
   font-family: var(--font-body);
 }
 
@@ -32,7 +32,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Glassmorphism & Grain (Stitch UI Emulation) */
 .glass-panel {
-  @apply bg-[#272528]/40 backdrop-blur-xl border border-white/5 shadow-2xl relative overflow-hidden;
+  @apply bg-black/30 backdrop-blur-xl border border-white/10 shadow-2xl relative overflow-hidden rounded-[25px];
 }
 
 .glass-grain {

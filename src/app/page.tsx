@@ -25,7 +25,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#0f0e10] text-white font-['Manrope'] pb-32" ref={scrollRef}>
+    <div className="min-h-screen bg-transparent text-white font-['Manrope'] pb-32" ref={scrollRef}>
       
       {/* Hero Section */}
       <section className="relative pt-24 pb-12 px-6 overflow-hidden">
@@ -144,7 +144,7 @@ export default function Home() {
         {/* Flowing Beyond Borders Section */}
         <section className="home-card relative overflow-hidden rounded-[3rem] p-1 md:p-1.5 animate-border-glow shadow-2xl mt-8">
           <div className="absolute inset-0 bg-gradient-to-r from-[#ff89ab] via-[#ffb155] to-[#00e3fd] bg-flowing-gradient opacity-80" />
-          <div className="relative z-10 bg-[#0f0e10]/80 backdrop-blur-3xl rounded-[2.8rem] p-8 md:p-16 text-center space-y-8 flex flex-col items-center">
+          <div className="relative z-10 bg-transparent/80 backdrop-blur-3xl rounded-[2.8rem] p-8 md:p-16 text-center space-y-8 flex flex-col items-center">
             
             <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[#00e3fd] to-[#ffb155] p-1 mx-auto mb-4 animate-spin" style={{ animationDuration: '8s' }}>
               <div className="w-full h-full rounded-full bg-[#141315] flex items-center justify-center">

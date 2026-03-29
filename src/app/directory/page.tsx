@@ -65,11 +65,11 @@ export default function Directory() {
   const categories = ["All Spots", "Food & Drink", "Nightlife", "Fashion", "Art", "Barbershops"];
 
   return (
-    <div className="min-h-screen bg-[#0f0e10] text-white font-['Manrope'] pb-32">
+    <div className="min-h-screen bg-transparent text-white font-['Manrope'] pb-32">
       {/* Background Glow */}
       <div className="fixed top-0 inset-x-0 h-64 bg-gradient-to-b from-[#ff89ab]/10 to-transparent pointer-events-none -z-10"></div>
 
-      <header className="sticky top-0 z-50 bg-[#0f0e10]/80 backdrop-blur-xl border-b border-white/5 px-6 py-4">
+      <header className="sticky top-0 z-50 bg-transparent/80 backdrop-blur-xl border-b border-white/5 px-6 py-4">
         <div className="flex justify-between items-center mb-4 md:justify-start md:gap-6">
           <h1 className="text-xl font-black bg-gradient-to-r from-[#ff89ab] to-[#ffb155] bg-clip-text text-transparent font-['Plus_Jakarta_Sans']">
             Directory
@@ -128,7 +128,7 @@ export default function Directory() {
           </div>
         ) : (
           businesses.map((item, index) => (
-            <div key={item.id} className="dir-card opacity-0 glass-panel rounded-2xl p-4 flex gap-4 border border-white/5 hover:bg-white/[0.02] transition-colors cursor-pointer group">
+            <div key={item.id} className="dir-card opacity-0 glass-panel p-4 flex gap-4 border border-white/5 hover:bg-white/[0.02] transition-colors cursor-pointer group">
               <div className="w-24 h-24 rounded-xl overflow-hidden shrink-0 relative">
                 <Image width={400} height={400} 
                   src={item.image_url || `https://images.unsplash.com/photo-${1514525253161 + index}?w=400&q=80`} 
@@ -136,7 +136,7 @@ export default function Directory() {
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
                 {item.verified && (
-                  <div className="absolute top-2 right-2 w-6 h-6 rounded-full bg-[#0f0e10]/80 backdrop-blur-md flex items-center justify-center border border-white/10">
+                  <div className="absolute top-2 right-2 w-6 h-6 rounded-full bg-transparent/80 backdrop-blur-md flex items-center justify-center border border-white/10">
                     <Flame className="w-3 h-3 text-[#ffb155]" />
                   </div>
                 )}
