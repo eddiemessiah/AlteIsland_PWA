@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import gsap from "gsap";
 import Image from "next/image";
 import Link from "next/link";
-import { Search, MapPin, Navigation, Compass, Flame, Loader2, Plus } from "lucide-react";
+import { Search, MapPin, Navigation, Compass, Flame, Loader2, Plus, Bookmark } from "lucide-react";
+import { useModalStore } from "@/store/useModalStore";
 import { createClient } from "@/utils/supabase/client";
 
 interface Business {
@@ -24,6 +25,7 @@ export default function Directory() {
   const [activeFilter, setActiveFilter] = useState("All Spots");
   const [searchQuery, setSearchQuery] = useState("");
   const supabase = createClient();
+  const openListModal = useModalStore((state) => state.openListModal);
 
   useEffect(() => {
     async function fetchBusinesses() {
@@ -48,7 +50,7 @@ export default function Directory() {
     }
 
     fetchBusinesses();
-  }, [activeFilter, searchQuery, supabase]);
+  }, [activeFilter, searchQuery]);
 
   useEffect(() => {
     if (!loading && businesses.length > 0) {
@@ -68,7 +70,7 @@ export default function Directory() {
       <div className="fixed top-0 inset-x-0 h-64 bg-gradient-to-b from-[#ff89ab]/10 to-transparent pointer-events-none -z-10"></div>
 
       <header className="sticky top-0 z-50 bg-[#0f0e10]/80 backdrop-blur-xl border-b border-white/5 px-6 py-4">
-        <div className="flex justify-between items-center mb-4">
+        <div className="flex justify-between items-center mb-4 md:justify-start md:gap-6">
           <h1 className="text-xl font-black bg-gradient-to-r from-[#ff89ab] to-[#ffb155] bg-clip-text text-transparent font-['Plus_Jakarta_Sans']">
             Directory
           </h1>
@@ -157,6 +159,9 @@ export default function Directory() {
                 <div className="flex gap-2 mt-3">
                   <button className="flex-1 bg-white/5 hover:bg-white/10 text-white text-[10px] font-bold py-2 rounded-lg transition-colors flex items-center justify-center gap-1 uppercase tracking-wider">
                     <Navigation className="w-3 h-3" /> Directions
+                  </button>
+                  <button onClick={(e) => { e.stopPropagation(); openListModal(item.id); }} className="w-10 bg-white/5 hover:bg-white/10 text-[#ff89ab] hover:text-white rounded-lg flex items-center justify-center transition-colors">
+                    <Bookmark className="w-4 h-4" />
                   </button>
                   <button className="w-10 bg-white/5 hover:bg-white/10 text-white rounded-lg flex items-center justify-center transition-colors">
                     <Compass className="w-4 h-4 text-[#00e3fd]" />

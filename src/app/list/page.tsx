@@ -29,7 +29,7 @@ export default function Lists() {
       <div className="absolute bottom-0 right-0 w-[800px] h-[500px] bg-gradient-to-tl from-[#ffb155]/10 via-[#ff89ab]/5 to-transparent blur-[100px] pointer-events-none -z-10 animate-liquid-blob opacity-60 -translate-y-1/2" />
 
       <header className="fixed top-0 w-full z-50 bg-[#0f0e10]/80 backdrop-blur-xl border-b border-white/5 px-6 py-4 flex flex-col gap-4 md:hidden">
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center md:justify-start md:gap-4">
           <h1 className="text-xl font-black bg-gradient-to-r from-[#ff89ab] to-[#ffb155] bg-clip-text text-transparent font-['Plus_Jakarta_Sans']">
             Lists
           </h1>

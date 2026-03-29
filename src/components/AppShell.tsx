@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import BottomNav from "./BottomNav";
 import DesktopNav from "./DesktopNav";
 import PWAInstallPrompt from "./PWAInstallPrompt";
+import ListModal from "./ListModal";
 import { Music, Play } from "lucide-react";
 
 const FallingCrystals = () => {
@@ -188,6 +189,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         <DesktopNav />
         {children}
         <BottomNav />
+        <ListModal />
         <PWAInstallPrompt />
 
         {/* Global Spotify Music Player Overlay */}
