@@ -71,7 +71,7 @@ export default function Lists() {
         </div>
 
         {/* Info Banner */}
-        <div className="list-stagger p-5 rounded-[20px] bg-[rgba(0,0,0,0.32)] border border-white/10 text-white text-sm flex items-center gap-4 backdrop-blur-xl shadow-xl">
+        <div className="list-stagger p-5 rounded-[20px] bg-[rgba(0,0,0,0.32)] border border-black/20 text-white text-sm flex items-center gap-4 backdrop-blur-xl shadow-xl">
           <div className="w-2 h-2 rounded-full bg-white shrink-0 animate-pulse shadow-[0_0_10px_white]" />
           <p className="font-medium text-white/90">
             Your lists are saved locally on this device. Sign in to sync across devices and make lists public.
@@ -80,7 +80,7 @@ export default function Lists() {
 
         {/* Empty State */}
         <div className="list-stagger py-12 md:py-20 flex flex-col items-center justify-center text-center">
-          <div className="w-32 h-32 rounded-[30px] bg-[rgba(0,0,0,0.32)] backdrop-blur-md mb-8 flex items-center justify-center shadow-2xl border border-white/10 rotate-3">
+          <div className="w-32 h-32 rounded-[30px] bg-[rgba(0,0,0,0.32)] backdrop-blur-md mb-8 flex items-center justify-center shadow-2xl border border-black/20 rotate-3">
             <ListMusic strokeWidth={1.5} className="w-12 h-12 text-white" />
           </div>
           <h2 className="text-3xl md:text-4xl font-black font-['Inter'] mb-4 text-black">No lists yet</h2>
@@ -99,7 +99,7 @@ export default function Lists() {
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {ideas.map((idea, index) => (
-              <div key={index} className="bg-[rgba(0,0,0,0.32)] p-6 rounded-[25px] flex items-center gap-5 hover:bg-black/50 transition-all cursor-pointer group border border-white/10 shadow-xl backdrop-blur-md hover:-translate-y-2">
+              <div key={index} className="bg-[rgba(0,0,0,0.32)] p-6 rounded-[25px] flex items-center gap-5 hover:bg-black/50 transition-all cursor-pointer group border border-black/20 shadow-xl backdrop-blur-md hover:-translate-y-2">
                 <div className={`w-14 h-14 rounded-full flex items-center justify-center bg-white group-hover:bg-black group-hover:text-white transition-colors shadow-lg`} style={{ color: idea.color }}>
                   <idea.icon strokeWidth={2} className="w-6 h-6 group-hover:scale-110 transition-transform" />
                 </div>

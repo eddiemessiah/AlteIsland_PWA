@@ -45,7 +45,7 @@ export default function Hot() {
 
           <div className="flex gap-4 overflow-x-auto no-scrollbar pb-8 -mx-6 px-6 snap-x snap-mandatory items-start">
             {[1, 2, 3, 4].map((i) => (
-              <div key={i} className="stagger-slide snap-center shrink-0 w-[333px] h-[664px] bg-[rgba(0,0,0,0.32)] rounded-[25px] relative overflow-hidden group cursor-pointer border border-white/20 shadow-2xl backdrop-blur-md">
+              <div key={i} className="stagger-slide snap-center shrink-0 w-[333px] h-[664px] bg-[rgba(0,0,0,0.32)] rounded-[25px] relative overflow-hidden group cursor-pointer border border-black/20 shadow-2xl backdrop-blur-md">
                 <Image 
                   src={`https://images.unsplash.com/photo-${photos[i]}?w=600&q=80`} 
                   fill 
@@ -54,7 +54,7 @@ export default function Hot() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
                 
-                <div className="absolute top-6 right-6 bg-white/10 backdrop-blur-md rounded-full px-4 py-2 text-xs font-bold text-white border border-white/20 flex items-center gap-2 shadow-lg">
+                <div className="absolute top-6 right-6 bg-white/10 backdrop-blur-md rounded-full px-4 py-2 text-xs font-bold text-white border border-black/20 flex items-center gap-2 shadow-lg">
                   <Snowflake className="w-4 h-4 text-white" /> ICE COLD
                 </div>
 
@@ -62,15 +62,15 @@ export default function Hot() {
                   <h3 className="text-3xl font-black font-['Inter'] mb-2 text-white drop-shadow-lg leading-tight">Lagos Fashion Week Preview</h3>
                   <p className="text-white/80 text-sm mb-6 line-clamp-3 leading-relaxed">Exclusive behind the scenes look at the designers shaping the future of African fashion. A cultural reset in real-time.</p>
                   
-                  <div className="flex items-center justify-between pt-4 border-t border-white/20">
+                  <div className="flex items-center justify-between pt-4 border-t border-black/20">
                     <div className="flex -space-x-3">
-                      <div className="w-10 h-10 rounded-full bg-black border-2 border-white/20" />
-                      <div className="w-10 h-10 rounded-full bg-black border-2 border-white/20" />
-                      <div className="w-10 h-10 rounded-full bg-white border-2 border-white/20 flex items-center justify-center text-black text-xs font-bold shadow-lg">
+                      <div className="w-10 h-10 rounded-full bg-black border-2 border-black/20" />
+                      <div className="w-10 h-10 rounded-full bg-black border-2 border-black/20" />
+                      <div className="w-10 h-10 rounded-full bg-white border-2 border-black/20 flex items-center justify-center text-black text-xs font-bold shadow-lg">
                         +84
                       </div>
                     </div>
-                    <button className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center hover:bg-white text-white hover:text-black transition-colors border border-white/10 shadow-xl">
+                    <button className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center hover:bg-white text-white hover:text-black transition-colors border border-black/20 shadow-xl">
                       <Heart className="w-5 h-5" />
                     </button>
                   </div>
@@ -87,7 +87,7 @@ export default function Hot() {
           </div>
 
           {[1, 2, 3].map((i) => (
-            <div key={i} className="stagger-slide bg-[rgba(0,0,0,0.32)] rounded-[25px] p-4 flex gap-4 items-center group cursor-pointer hover:bg-black/50 transition-colors border border-white/10 shadow-xl backdrop-blur-xl">
+            <div key={i} className="stagger-slide bg-[rgba(0,0,0,0.32)] rounded-[25px] p-4 flex gap-4 items-center group cursor-pointer hover:bg-black/50 transition-colors border border-black/20 shadow-xl backdrop-blur-xl">
               <div className="w-24 h-24 rounded-2xl overflow-hidden relative shrink-0">
                 <Image 
                   src={`https://images.unsplash.com/photo-${photos[i+2]}?w=200&q=80`} 
@@ -97,8 +97,8 @@ export default function Hot() {
                 />
               </div>
               <div className="flex-1">
-                <h3 className="font-bold font-['Inter'] text-xl mb-1 group-hover:text-white text-white/90 transition-colors">Best new spaces in Berlin</h3>
-                <p className="text-white/60 text-sm">A curated list of where the diaspora is meeting up this summer.</p>
+                <h3 className="font-bold font-['Inter'] text-xl mb-1 group-hover:text-black text-black/90 transition-colors">Best new spaces in Berlin</h3>
+                <p className="text-black/60 text-sm">A curated list of where the diaspora is meeting up this summer.</p>
               </div>
             </div>
           ))}

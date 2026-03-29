@@ -130,7 +130,7 @@ export default function Directory() {
           </div>
         ) : (
           businesses.map((item, index) => (
-            <div key={item.id} className="dir-card bg-[rgba(0,0,0,0.32)] backdrop-blur-xl rounded-[25px] p-5 flex gap-5 border border-white/10 hover:bg-black/50 transition-colors cursor-pointer group shadow-2xl">
+            <div key={item.id} className="dir-card opacity-0 bg-[rgba(0,0,0,0.32)] backdrop-blur-xl rounded-[25px] p-5 flex gap-5 border border-white/10 hover:bg-black/50 transition-colors cursor-pointer group shadow-2xl">
               <div className="w-28 h-28 rounded-[20px] overflow-hidden shrink-0 relative shadow-xl">
                 <Image width={400} height={400} 
                   src={item.image_url || `https://images.unsplash.com/photo-${photos[index % 10]}?w=400&q=80`} 
