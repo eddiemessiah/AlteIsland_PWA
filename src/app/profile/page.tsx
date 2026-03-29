@@ -2,9 +2,14 @@
 
 import { useEffect } from "react";
 import gsap from "gsap";
-import { Lock, Flame, List as ListIcon, Star, Target, Crown } from "lucide-react";
+import { Lock, Flame, List as ListIcon, Star, Target, Crown, LogOut } from "lucide-react";
+import { useUserStore } from "@/store/useUserStore";
+import { createClient } from "@/utils/supabase/client";
 
 export default function Profile() {
+  const { profile, isLoading, setProfile } = useUserStore();
+  const supabase = createClient();
+
   useEffect(() => {
     gsap.fromTo(
       ".profile-stagger",
@@ -12,6 +17,20 @@ export default function Profile() {
       { y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: "power3.out" }
     );
   }, []);
+
+  const handleSignIn = async () => {
+    await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: {
+        redirectTo: `${window.location.origin}/auth/callback`,
+      },
+    })
+  }
+
+  const handleSignOut = async () => {
+    await supabase.auth.signOut()
+    setProfile(null)
+  }
 
   return (
     <div className="min-h-screen bg-[#0f0e10] text-white font-['Manrope'] pb-32 overflow-hidden">
@@ -23,33 +42,78 @@ export default function Profile() {
         <h1 className="text-xl font-black bg-gradient-to-r from-[#ff89ab] to-[#ffb155] bg-clip-text text-transparent font-['Plus_Jakarta_Sans']">
           Profile
         </h1>
+        {profile && (
+          <button onClick={handleSignOut} className="text-[#aeaaad] hover:text-white transition-colors">
+            <LogOut className="w-5 h-5" />
+          </button>
+        )}
       </header>
 
       <main className="pt-24 px-6 max-w-5xl mx-auto space-y-12 md:space-y-16">
         
-        {/* Welcome Block */}
-        <section className="profile-stagger text-center md:text-left">
-          <h1 className="font-['Plus_Jakarta_Sans'] font-extrabold text-4xl md:text-6xl tracking-tighter mb-4 leading-tight">
-            Welcome to <span className="bg-gradient-to-r from-[#ff89ab] to-[#ffb155] bg-clip-text text-transparent">Afro Club</span>
-          </h1>
-          <p className="text-[#aeaaad] text-lg md:text-xl max-w-2xl font-light leading-relaxed mb-8 mx-auto md:mx-0">
-            Sign in to unlock all features: save businesses to lists, track your votes, and join the community.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-            <button className="bg-gradient-to-r from-[#ff89ab] to-[#e30071] text-white px-8 py-4 rounded-full font-bold text-base hover:scale-105 transition-transform shadow-[0_0_30px_rgba(255,137,171,0.3)]">
-              Create Account
-            </button>
-            <button className="glass-panel border border-white/10 px-8 py-4 rounded-full font-bold text-base hover:bg-white/10 transition-colors text-[#aeaaad] hover:text-white">
-              Sign In
-            </button>
+        {isLoading ? (
+          <div className="flex justify-center items-center h-32">
+            <div className="w-8 h-8 rounded-full border-2 border-[#ff89ab] border-t-transparent animate-spin"></div>
           </div>
-        </section>
+        ) : profile ? (
+          /* Logged In State */
+          <section className="profile-stagger flex flex-col items-center md:flex-row md:items-start gap-8">
+            <div className="relative">
+              <img 
+                src={profile.avatar_url || "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=200&q=80"} 
+                alt="Avatar" 
+                className="w-32 h-32 md:w-40 md:h-40 rounded-3xl object-cover border-2 border-[#ff89ab]/30 shadow-[0_0_40px_rgba(255,137,171,0.2)]"
+              />
+              <div className="absolute -bottom-4 -right-4 bg-[#141315] border border-white/10 px-4 py-2 rounded-full flex items-center gap-2 shadow-xl">
+                <Crown className="w-4 h-4 text-[#ffb155]" />
+                <span className="font-bold text-sm text-[#ffb155] font-['Plus_Jakarta_Sans']">{profile.afro_points} PTS</span>
+              </div>
+            </div>
+            
+            <div className="text-center md:text-left mt-4 md:mt-0 flex-1">
+              <h1 className="font-['Plus_Jakarta_Sans'] font-extrabold text-4xl md:text-5xl tracking-tighter mb-2">
+                {profile.full_name || profile.username || 'Afro Explorer'}
+              </h1>
+              <p className="text-[#00e3fd] font-bold tracking-[0.2em] uppercase text-xs mb-6">Verified Member</p>
+              
+              <div className="grid grid-cols-3 gap-4 border-y border-white/5 py-6">
+                <div className="text-center md:text-left">
+                  <div className="text-2xl font-black text-white">0</div>
+                  <div className="text-[10px] text-[#aeaaad] uppercase tracking-widest mt-1">Votes</div>
+                </div>
+                <div className="text-center md:text-left border-x border-white/5">
+                  <div className="text-2xl font-black text-white">0</div>
+                  <div className="text-[10px] text-[#aeaaad] uppercase tracking-widest mt-1">Lists</div>
+                </div>
+                <div className="text-center md:text-left">
+                  <div className="text-2xl font-black text-[#ffb155]">{profile.afro_points}</div>
+                  <div className="text-[10px] text-[#aeaaad] uppercase tracking-widest mt-1">Points</div>
+                </div>
+              </div>
+            </div>
+          </section>
+        ) : (
+          /* Logged Out State */
+          <section className="profile-stagger text-center md:text-left">
+            <h1 className="font-['Plus_Jakarta_Sans'] font-extrabold text-4xl md:text-6xl tracking-tighter mb-4 leading-tight">
+              Welcome to <span className="bg-gradient-to-r from-[#ff89ab] to-[#ffb155] bg-clip-text text-transparent">Afro Club</span>
+            </h1>
+            <p className="text-[#aeaaad] text-lg md:text-xl max-w-2xl font-light leading-relaxed mb-8 mx-auto md:mx-0">
+              Sign in to unlock all features: save businesses to lists, earn Afro Points by voting, and join the community.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+              <button onClick={handleSignIn} className="bg-gradient-to-r from-[#ff89ab] to-[#e30071] text-white px-8 py-4 rounded-full font-bold text-base hover:scale-105 transition-transform shadow-[0_0_30px_rgba(255,137,171,0.3)]">
+                Sign In with Google
+              </button>
+            </div>
+          </section>
+        )}
 
         {/* Bento Grid: What You Can Do */}
         <section className="profile-stagger">
           <div className="mb-6">
             <span className="text-[#00e3fd] font-bold tracking-[0.2em] uppercase text-[10px] md:text-xs">Features</span>
-            <h2 className="font-['Plus_Jakarta_Sans'] text-2xl md:text-3xl font-bold mt-2">What you can do</h2>
+            <h2 className="font-['Plus_Jakarta_Sans'] text-2xl md:text-3xl font-bold mt-2">Earn Afro Points</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">
@@ -67,8 +131,8 @@ export default function Profile() {
                 </div>
               </div>
               <div className="relative z-20 mt-auto">
-                <h3 className="text-2xl md:text-3xl font-['Plus_Jakarta_Sans'] font-bold mb-2">Vote Hot or Not</h3>
-                <p className="text-[#aeaaad] text-sm md:text-base max-w-sm">Influence the global rankings. Set the trends for the community in real-time.</p>
+                <h3 className="text-2xl md:text-3xl font-['Plus_Jakarta_Sans'] font-bold mb-2">Vote Hot or Not <span className="text-[#ffb155]">+5 PTS</span></h3>
+                <p className="text-[#aeaaad] text-sm md:text-base max-w-sm">Influence the global rankings. Set the trends for the community in real-time and earn points for every vote.</p>
               </div>
             </div>
 
@@ -79,76 +143,6 @@ export default function Profile() {
               </div>
               <h3 className="text-xl md:text-2xl font-['Plus_Jakarta_Sans'] font-bold mb-3">Create Lists</h3>
               <p className="text-[#aeaaad] text-sm md:text-base">Curate your favorite spots, tracks, and moments into shared collections.</p>
-            </div>
-
-            {/* Write Reviews */}
-            <div className="md:col-span-5 glass-panel rounded-2xl md:rounded-3xl p-6 md:p-8 border border-white/5 flex flex-col justify-between h-[300px] md:h-auto">
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-[#ff89ab]/20 flex items-center justify-center mb-4">
-                  <Star className="text-[#ff89ab] w-6 h-6" />
-                </div>
-                <h3 className="text-xl md:text-2xl font-['Plus_Jakarta_Sans'] font-bold mb-3">Write Reviews</h3>
-                <p className="text-[#aeaaad] text-sm md:text-base">Share your experiences and help others find the hidden gems of the world.</p>
-              </div>
-              <div className="flex -space-x-3 mt-6">
-                <img className="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-[#0f0e10] object-cover" src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=200&q=80" alt="user" />
-                <img className="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-[#0f0e10] object-cover" src="https://images.unsplash.com/photo-1506803682981-6e718a9dd3ee?w=200&q=80" alt="user" />
-                <div className="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-[#0f0e10] bg-[#272528] flex items-center justify-center text-[8px] md:text-[10px] font-bold">
-                  +12k
-                </div>
-              </div>
-            </div>
-
-            {/* Your Impact Stats */}
-            <div className="md:col-span-7 glass-panel rounded-2xl md:rounded-3xl p-6 md:p-8 border border-white/5 relative overflow-hidden">
-              <div className="absolute -top-4 -right-4 md:top-0 md:right-0 p-8 opacity-10">
-                <Target className="w-32 h-32 md:w-48 md:h-48" />
-              </div>
-              <h3 className="text-xl md:text-2xl font-['Plus_Jakarta_Sans'] font-bold mb-6 md:mb-8 relative z-10">Your Impact</h3>
-              
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-6 relative z-10">
-                <div>
-                  <div className="text-3xl md:text-4xl font-['Plus_Jakarta_Sans'] font-extrabold text-[#00e3fd]">0</div>
-                  <div className="text-[10px] md:text-xs text-[#aeaaad] uppercase tracking-widest mt-1">Votes Cast</div>
-                </div>
-                <div>
-                  <div className="text-3xl md:text-4xl font-['Plus_Jakarta_Sans'] font-extrabold text-[#ff89ab]">0</div>
-                  <div className="text-[10px] md:text-xs text-[#aeaaad] uppercase tracking-widest mt-1">Lists Made</div>
-                </div>
-                <div className="col-span-2 md:col-span-1">
-                  <div className="text-3xl md:text-4xl font-['Plus_Jakarta_Sans'] font-extrabold text-[#ffb155]">0</div>
-                  <div className="text-[10px] md:text-xs text-[#aeaaad] uppercase tracking-widest mt-1">Reviews</div>
-                </div>
-              </div>
-              
-              <div className="mt-8 p-3 md:p-4 rounded-xl bg-white/5 border border-white/5 flex items-center space-x-3 relative z-10">
-                <Lock className="text-[#ff89ab] w-4 h-4 shrink-0" />
-                <p className="text-xs md:text-sm text-[#aeaaad]">Sign in to sync your activity across devices.</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Upgrade / Exclusive Section */}
-        <section className="profile-stagger mb-12">
-          <div className="rounded-2xl md:rounded-3xl overflow-hidden relative min-h-[300px] md:min-h-[400px] flex items-center justify-center text-center p-6 md:p-8">
-            <div className="absolute inset-0 z-0">
-              <img 
-                src="https://images.unsplash.com/photo-1557672172-298e090bd0f1?w=1000&q=80" 
-                className="w-full h-full object-cover" 
-                alt="Colorful abstract" 
-              />
-              <div className="absolute inset-0 bg-[#0f0e10]/80 backdrop-blur-md"></div>
-            </div>
-            <div className="relative z-10 max-w-xl mx-auto flex flex-col items-center">
-              <Crown className="w-10 h-10 text-[#ffb155] mb-4" />
-              <h2 className="font-['Plus_Jakarta_Sans'] text-2xl md:text-4xl font-bold mb-4">Unlock the Full Experience</h2>
-              <p className="text-[#aeaaad] text-sm md:text-lg mb-6 leading-relaxed">
-                Become a member of the elite Afro Club community. Get priority access to events, exclusive drops, and verified status.
-              </p>
-              <button className="bg-[#00e3fd] text-[#0f0e10] px-8 py-3 md:px-12 md:py-4 rounded-full font-bold text-sm md:text-lg hover:scale-105 shadow-[0_0_30px_rgba(0,227,253,0.4)] transition-all">
-                Upgrade Now
-              </button>
             </div>
           </div>
         </section>

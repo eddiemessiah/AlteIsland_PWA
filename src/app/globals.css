@@ -176,14 +176,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .animate-radial-wave {
-  animation: radial-wave-outward 4s cubic-bezier(0.1, 0.6, 0.3, 1) infinite;
+  animation: radial-wave-outward 8s cubic-bezier(0.1, 0.6, 0.3, 1) infinite;
   will-change: transform, opacity, filter;
   transform-origin: center center;
 }
 
-.delay-1000 { animation-delay: 1s; }
-.delay-2000 { animation-delay: 2s; }
-.delay-3000 { animation-delay: 3s; }
+.delay-1000 { animation-delay: 2s; }
+.delay-2000 { animation-delay: 4s; }
+.delay-3000 { animation-delay: 6s; }
 
 /* Flowing Gradient for Shop Page Section */
 @keyframes flowing-gradient-x {
