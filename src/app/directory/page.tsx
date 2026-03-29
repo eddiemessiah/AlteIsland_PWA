@@ -130,44 +130,42 @@ export default function Directory() {
           </div>
         ) : (
           businesses.map((item, index) => (
-            <div key={item.id} className="dir-card opacity-0 bg-[rgba(0,0,0,0.32)] backdrop-blur-xl rounded-[25px] p-5 flex gap-5 border border-white/10 hover:bg-black/50 transition-colors cursor-pointer group shadow-2xl">
-              <div className="w-28 h-28 rounded-[20px] overflow-hidden shrink-0 relative shadow-xl">
-                <Image width={400} height={400} 
-                  src={item.image_url || `https://images.unsplash.com/photo-${photos[index % 10]}?w=400&q=80`} 
-                  alt={item.name} 
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-90"
-                />
-                {item.verified && (
-                  <div className="absolute top-2 right-2 w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-lg border-2 border-black/10">
-                    <Flame strokeWidth={2.5} className="w-4 h-4 text-black" />
-                  </div>
-                )}
-              </div>
-              
-              <div className="flex-1 py-1 flex flex-col justify-between">
-                <div>
-                  <div className="flex justify-between items-start">
-                    <h3 className="font-['Inter'] font-black text-xl leading-tight text-white group-hover:text-white/80 transition-colors">
-                      {item.name}
-                    </h3>
-                    <div className="flex gap-1">
-                      <span className="text-[10px] font-black text-black bg-white px-2 py-1 rounded-[8px] shadow-lg">4.9★</span>
+            <div key={item.id} className="dir-card opacity-0 bg-[rgba(0,0,0,0.32)] backdrop-blur-xl rounded-[25px] p-5 flex flex-col gap-4 border border-white/10 hover:bg-black/50 transition-colors cursor-pointer group shadow-2xl">
+              <div className="flex gap-4 items-center">
+                <div className="w-20 h-20 md:w-24 md:h-24 rounded-[20px] overflow-hidden shrink-0 relative shadow-xl">
+                  <Image width={400} height={400} 
+                    src={item.image_url || `https://images.unsplash.com/photo-${photos[index % 10]}?w=600&q=100`} 
+                    alt={item.name} 
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-100"
+                  />
+                  {item.verified && (
+                    <div className="absolute top-1 right-1 w-6 h-6 rounded-full bg-white flex items-center justify-center shadow-lg border border-black/10">
+                      <Flame strokeWidth={2.5} className="w-3 h-3 text-black" />
                     </div>
-                  </div>
-                  <p className="text-white/60 text-xs mt-2 font-medium">{item.category} • {item.address?.split(',')[0] || item.city}</p>
+                  )}
                 </div>
                 
-                <div className="flex gap-3 mt-4">
-                  <button className="flex-1 bg-white/10 hover:bg-white text-white hover:text-black text-[10px] font-black py-3 rounded-[15px] transition-colors flex items-center justify-center gap-2 uppercase tracking-widest border border-white/20 shadow-md">
-                    <Navigation className="w-3 h-3" /> Directions
-                  </button>
-                  <button onClick={(e) => { e.stopPropagation(); openListModal(item.id); }} className="w-12 bg-white/10 hover:bg-white text-white hover:text-black rounded-[15px] flex items-center justify-center transition-colors border border-white/20 shadow-md">
-                    <Bookmark strokeWidth={2} className="w-4 h-4" />
-                  </button>
-                  <button className="w-12 bg-white/10 hover:bg-white text-white hover:text-black rounded-[15px] flex items-center justify-center transition-colors border border-white/20 shadow-md">
-                    <Compass strokeWidth={2} className="w-4 h-4" />
-                  </button>
+                <div className="flex-1 min-w-0">
+                  <div className="flex justify-between items-start gap-2">
+                    <h3 className="font-['Inter'] font-black text-lg leading-tight text-white group-hover:text-white/80 transition-colors truncate">
+                      {item.name}
+                    </h3>
+                    <span className="text-[10px] font-black text-black bg-white px-2 py-1 rounded-[8px] shadow-lg shrink-0">4.9★</span>
+                  </div>
+                  <p className="text-white/60 text-xs mt-1 font-medium truncate">{item.category} • {item.address?.split(',')[0] || item.city}</p>
                 </div>
+              </div>
+              
+              <div className="flex gap-2">
+                <button className="flex-1 bg-white/10 hover:bg-white text-white hover:text-black text-[10px] font-black py-3 px-2 rounded-[15px] transition-colors flex items-center justify-center gap-1 uppercase tracking-widest border border-white/20 shadow-md">
+                  <Navigation className="w-3 h-3" /> Directions
+                </button>
+                <button onClick={(e) => { e.stopPropagation(); openListModal(item.id); }} className="w-12 shrink-0 bg-white/10 hover:bg-white text-white hover:text-black rounded-[15px] flex items-center justify-center transition-colors border border-white/20 shadow-md">
+                  <Bookmark strokeWidth={2} className="w-4 h-4" />
+                </button>
+                <button className="w-12 shrink-0 bg-white/10 hover:bg-white text-white hover:text-black rounded-[15px] flex items-center justify-center transition-colors border border-white/20 shadow-md">
+                  <Compass strokeWidth={2} className="w-4 h-4" />
+                </button>
               </div>
             </div>
           ))

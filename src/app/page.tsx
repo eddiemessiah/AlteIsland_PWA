@@ -62,7 +62,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="relative h-64 md:h-80 rounded-[25px] overflow-hidden group cursor-pointer border border-white/20 shadow-2xl">
               <Image 
-                src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800&q=80" 
+                src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=1200&q=100" 
                 alt="Concert" 
                 fill 
                 className="object-cover transition-transform duration-700 group-hover:scale-105" 
@@ -84,7 +84,7 @@ export default function Home() {
 
             <div className="relative h-64 md:h-80 rounded-[25px] overflow-hidden group cursor-pointer border border-white/20 shadow-2xl">
               <Image 
-                src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80" 
+                src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&q=100" 
                 alt="Food" 
                 fill 
                 className="object-cover transition-transform duration-700 group-hover:scale-105" 
@@ -120,10 +120,10 @@ export default function Home() {
               <div key={idx} className="w-64 shrink-0 rounded-[25px] p-5 bg-black/50 backdrop-blur-md border border-white/10 hover:bg-black/60 transition-colors group cursor-pointer shadow-xl">
                 <div className="flex -space-x-3 mb-4">
                   <div className="w-10 h-10 rounded-full bg-[#272528] border-2 border-black flex items-center justify-center overflow-hidden">
-                    <Image src={`https://images.unsplash.com/photo-${listImages[idx][0]}?w=100&q=80`} width={40} height={40} alt="Spot" className="object-cover w-full h-full" />
+                    <Image src={`https://images.unsplash.com/photo-${listImages[idx][0]}?w=300&q=100`} width={40} height={40} alt="Spot" className="object-cover w-full h-full" />
                   </div>
                   <div className="w-10 h-10 rounded-full bg-[#272528] border-2 border-black flex items-center justify-center overflow-hidden">
-                    <Image src={`https://images.unsplash.com/photo-${listImages[idx][1]}?w=100&q=80`} width={40} height={40} alt="Spot" className="object-cover w-full h-full" />
+                    <Image src={`https://images.unsplash.com/photo-${listImages[idx][1]}?w=300&q=100`} width={40} height={40} alt="Spot" className="object-cover w-full h-full" />
                   </div>
                   <div className="w-10 h-10 rounded-full bg-white border-2 border-black flex items-center justify-center text-black text-[10px] font-bold shadow-lg">
                     +12
