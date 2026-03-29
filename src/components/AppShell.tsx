@@ -131,10 +131,10 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ delay: 1.5, type: "spring", bounce: 0.6 }}
                 onClick={handleEnter}
-                className="relative group overflow-hidden px-14 py-6 rounded-full bg-[#FFFFFF] transition-all shadow-[0_0_40px_rgba(255,255,255,0.6)] hover:shadow-[0_0_60px_rgba(255,255,255,0.8)] hover:scale-105"
+                className="relative group overflow-hidden px-14 py-6 rounded-full bg-[#FFFFFF] transition-all  hover:scale-105"
               >
                 <span className="relative z-10 font-['Inter'] font-black text-xl md:text-2xl text-black transition-colors flex items-center gap-3 tracking-widest uppercase">
-                  ENTER EXPERIENCE
+                  TAP TO ENTER
                 </span>
               </motion.button>
             </motion.div>
