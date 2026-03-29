@@ -20,6 +20,7 @@ interface Business {
 }
 
 export default function Directory() {
+  const photos = ["1514525253161-7a46d19cd819", "1555396273-367ea4eb4db5", "1566737236500-c8ac43014a67", "1441986300917-64674bd600d8", "1552566626-52f8b828add9", "1520006403909-838d6b92c22e", "1514525253161-7a46d19cd819", "1555396273-367ea4eb4db5", "1566737236500-c8ac43014a67", "1441986300917-64674bd600d8"];
   const [businesses, setBusinesses] = useState<Business[]>([]);
   const [loading, setLoading] = useState(true);
   const [activeFilter, setActiveFilter] = useState("All Spots");
@@ -41,12 +42,15 @@ export default function Directory() {
         query = query.ilike("name", `%${searchQuery}%`);
       }
       
-      const { data, error } = await query;
-      
-      if (data) setBusinesses(data);
-      if (error) console.error("Error fetching businesses:", error);
-      
-      setLoading(false);
+      try {
+        const { data, error } = await query;
+        if (data) setBusinesses(data);
+        if (error) console.error("Error fetching businesses:", error);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
     }
 
     fetchBusinesses();
@@ -65,43 +69,41 @@ export default function Directory() {
   const categories = ["All Spots", "Food & Drink", "Nightlife", "Fashion", "Art", "Barbershops"];
 
   return (
-    <div className="min-h-screen bg-transparent text-white font-['Manrope'] pb-32">
-      {/* Background Glow */}
-      <div className="fixed top-0 inset-x-0 h-64 bg-gradient-to-b from-[#ff89ab]/10 to-transparent pointer-events-none -z-10"></div>
-
-      <header className="sticky top-0 z-50 bg-transparent/80 backdrop-blur-xl border-b border-white/5 px-6 py-4">
+    <div className="min-h-screen bg-transparent text-black font-['Inter'] pb-32">
+      
+      <header className="sticky top-0 z-50 bg-black/30 backdrop-blur-3xl border-b border-black/10 px-6 py-4">
         <div className="flex justify-between items-center mb-4 md:justify-start md:gap-6">
-          <h1 className="text-xl font-black bg-gradient-to-r from-[#ff89ab] to-[#ffb155] bg-clip-text text-transparent font-['Inter']">
+          <h1 className="text-2xl font-black text-white font-['Inter']">
             Directory
           </h1>
-          <Link href="/directory/add" className="w-8 h-8 rounded-full bg-[#00e3fd]/20 text-[#00e3fd] flex items-center justify-center hover:bg-[#00e3fd] hover:text-[#0f0e10] transition-colors border border-[#00e3fd]/50">
-            <Plus className="w-5 h-5" />
+          <Link href="/directory/add" className="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center hover:scale-110 transition-transform shadow-xl">
+            <Plus strokeWidth={2.5} className="w-5 h-5" />
           </Link>
         </div>
         
         {/* Search Bar */}
         <div className="relative">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-[#aeaaad] w-5 h-5" />
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-white/50 w-5 h-5" />
           <input 
             type="text" 
             placeholder="Search businesses, spots, events..." 
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-[#141315] border border-white/10 rounded-full py-3 pl-12 pr-4 text-sm focus:outline-none focus:border-[#00e3fd]/50 transition-colors placeholder:text-[#aeaaad]/50"
+            className="w-full bg-[rgba(0,0,0,0.32)] backdrop-blur-md border border-white/20 rounded-[20px] py-4 pl-12 pr-4 text-sm focus:outline-none focus:border-white text-white placeholder:text-white/50 shadow-lg"
           />
         </div>
       </header>
 
       {/* Filter Chips */}
-      <div className="overflow-x-auto no-scrollbar px-6 py-4 flex gap-3">
+      <div className="overflow-x-auto no-scrollbar px-6 py-6 flex gap-3">
         {categories.map((filter, i) => (
           <button 
             key={i}
             onClick={() => setActiveFilter(filter)}
-            className={`whitespace-nowrap px-5 py-2 rounded-full text-xs font-bold border transition-all ${
+            className={`whitespace-nowrap px-6 py-3 rounded-full text-xs font-black uppercase tracking-widest border transition-all shadow-lg ${
               activeFilter === filter 
-                ? "bg-[#00e3fd]/10 border-[#00e3fd]/30 text-[#00e3fd]" 
-                : "bg-transparent border-white/10 text-[#aeaaad] hover:border-white/30"
+                ? "bg-black text-white border-black" 
+                : "bg-white/50 backdrop-blur-md border-transparent text-black/60 hover:bg-white"
             }`}
           >
             {filter}
@@ -109,35 +111,35 @@ export default function Directory() {
         ))}
       </div>
 
-      <main className="px-6 space-y-6 max-w-5xl mx-auto mt-4">
+      <main className="px-6 space-y-6 max-w-5xl mx-auto mt-2">
         
-        <div className="flex justify-between items-end mb-2">
-          <h2 className="font-['Inter'] text-xl font-bold">Trending Near You</h2>
-          <span className="text-[#ffb155] text-xs font-bold flex items-center gap-1 uppercase tracking-widest">
+        <div className="flex justify-between items-end mb-4">
+          <h2 className="font-['Inter'] text-3xl font-black text-black">Trending Near You</h2>
+          <span className="bg-black text-white px-3 py-1 rounded-full text-[10px] font-black flex items-center gap-1 uppercase tracking-[0.2em] shadow-lg">
             <MapPin className="w-3 h-3" /> Lagos
           </span>
         </div>
 
         {loading ? (
-          <div className="flex justify-center items-center py-20">
-            <Loader2 className="w-8 h-8 text-[#00e3fd] animate-spin" />
+          <div className="flex justify-center items-center py-32">
+            <Loader2 className="w-10 h-10 text-black animate-spin" />
           </div>
         ) : businesses.length === 0 ? (
-          <div className="text-center py-20 text-[#aeaaad]">
+          <div className="text-center py-20 text-black/60 font-medium">
             <p>No spots found matching your criteria.</p>
           </div>
         ) : (
           businesses.map((item, index) => (
-            <div key={item.id} className="dir-card opacity-0 glass-panel p-4 flex gap-4 border border-white/5 hover:bg-white/[0.02] transition-colors cursor-pointer group">
-              <div className="w-24 h-24 rounded-xl overflow-hidden shrink-0 relative">
+            <div key={item.id} className="dir-card bg-[rgba(0,0,0,0.32)] backdrop-blur-xl rounded-[25px] p-5 flex gap-5 border border-white/10 hover:bg-black/50 transition-colors cursor-pointer group shadow-2xl">
+              <div className="w-28 h-28 rounded-[20px] overflow-hidden shrink-0 relative shadow-xl">
                 <Image width={400} height={400} 
-                  src={item.image_url || `https://images.unsplash.com/photo-${1514525253161 + index}?w=400&q=80`} 
+                  src={item.image_url || `https://images.unsplash.com/photo-${photos[index % 10]}?w=400&q=80`} 
                   alt={item.name} 
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-90"
                 />
                 {item.verified && (
-                  <div className="absolute top-2 right-2 w-6 h-6 rounded-full bg-transparent/80 backdrop-blur-md flex items-center justify-center border border-white/10">
-                    <Flame className="w-3 h-3 text-[#ffb155]" />
+                  <div className="absolute top-2 right-2 w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-lg border-2 border-black/10">
+                    <Flame strokeWidth={2.5} className="w-4 h-4 text-black" />
                   </div>
                 )}
               </div>
@@ -145,26 +147,25 @@ export default function Directory() {
               <div className="flex-1 py-1 flex flex-col justify-between">
                 <div>
                   <div className="flex justify-between items-start">
-                    <h3 className="font-['Inter'] font-bold text-lg leading-tight group-hover:text-[#00e3fd] transition-colors">
+                    <h3 className="font-['Inter'] font-black text-xl leading-tight text-white group-hover:text-white/80 transition-colors">
                       {item.name}
                     </h3>
                     <div className="flex gap-1">
-                      {/* Placeholder rating, can pull from reviews table later */}
-                      <span className="text-xs font-bold text-[#aeaaad] bg-white/5 px-2 py-0.5 rounded-md">4.9★</span>
+                      <span className="text-[10px] font-black text-black bg-white px-2 py-1 rounded-[8px] shadow-lg">4.9★</span>
                     </div>
                   </div>
-                  <p className="text-[#aeaaad] text-xs mt-1 font-medium">{item.category} • {item.address?.split(',')[0] || item.city}</p>
+                  <p className="text-white/60 text-xs mt-2 font-medium">{item.category} • {item.address?.split(',')[0] || item.city}</p>
                 </div>
                 
-                <div className="flex gap-2 mt-3">
-                  <button className="flex-1 bg-white/5 hover:bg-white/10 text-white text-[10px] font-bold py-2 rounded-lg transition-colors flex items-center justify-center gap-1 uppercase tracking-wider">
+                <div className="flex gap-3 mt-4">
+                  <button className="flex-1 bg-white/10 hover:bg-white text-white hover:text-black text-[10px] font-black py-3 rounded-[15px] transition-colors flex items-center justify-center gap-2 uppercase tracking-widest border border-white/20 shadow-md">
                     <Navigation className="w-3 h-3" /> Directions
                   </button>
-                  <button onClick={(e) => { e.stopPropagation(); openListModal(item.id); }} className="w-10 bg-white/5 hover:bg-white/10 text-[#ff89ab] hover:text-white rounded-lg flex items-center justify-center transition-colors">
-                    <Bookmark className="w-4 h-4" />
+                  <button onClick={(e) => { e.stopPropagation(); openListModal(item.id); }} className="w-12 bg-white/10 hover:bg-white text-white hover:text-black rounded-[15px] flex items-center justify-center transition-colors border border-white/20 shadow-md">
+                    <Bookmark strokeWidth={2} className="w-4 h-4" />
                   </button>
-                  <button className="w-10 bg-white/5 hover:bg-white/10 text-white rounded-lg flex items-center justify-center transition-colors">
-                    <Compass className="w-4 h-4 text-[#00e3fd]" />
+                  <button className="w-12 bg-white/10 hover:bg-white text-white hover:text-black rounded-[15px] flex items-center justify-center transition-colors border border-white/20 shadow-md">
+                    <Compass strokeWidth={2} className="w-4 h-4" />
                   </button>
                 </div>
               </div>

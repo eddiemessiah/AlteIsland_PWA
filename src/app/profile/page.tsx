@@ -51,7 +51,7 @@ export default function Profile() {
       
       <header className="fixed top-0 w-full z-50 bg-black/30 backdrop-blur-3xl border-b border-white/10 px-6 py-4 flex justify-between items-center md:hidden">
         <h1 className="text-xl font-black text-white font-['Inter']">
-          ID Card
+          Afro Club Profile
         </h1>
         {profile && (
           <button onClick={handleSignOut} className="text-white/50 hover:text-white transition-colors">
