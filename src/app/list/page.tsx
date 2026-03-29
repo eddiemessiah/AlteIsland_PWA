@@ -30,7 +30,7 @@ export default function Lists() {
 
       <header className="fixed top-0 w-full z-50 bg-transparent/80 backdrop-blur-xl border-b border-white/5 px-6 py-4 flex flex-col gap-4 md:hidden">
         <div className="flex justify-between items-center md:justify-start md:gap-4">
-          <h1 className="text-xl font-black bg-gradient-to-r from-[#ff89ab] to-[#ffb155] bg-clip-text text-transparent font-['Plus_Jakarta_Sans']">
+          <h1 className="text-xl font-black bg-gradient-to-r from-[#ff89ab] to-[#ffb155] bg-clip-text text-transparent font-['Inter']">
             Lists
           </h1>
           <button className="w-8 h-8 rounded-full bg-[#272528] flex items-center justify-center hover:bg-[#ff89ab] hover:text-[#0f0e10] transition-colors">
@@ -55,7 +55,7 @@ export default function Lists() {
         <div className="hidden md:flex flex-col gap-6">
           <div className="flex justify-between items-end">
             <div>
-              <h1 className="text-4xl font-black bg-gradient-to-r from-[#ff89ab] to-[#00e3fd] bg-clip-text text-transparent font-['Plus_Jakarta_Sans'] mb-2">
+              <h1 className="text-4xl font-black bg-gradient-to-r from-[#ff89ab] to-[#00e3fd] bg-clip-text text-transparent font-['Inter'] mb-2">
                 Your Lists
               </h1>
               <p className="text-[#aeaaad]">Curate and share the best spots in the diaspora.</p>
@@ -87,7 +87,7 @@ export default function Lists() {
           <div className="w-24 h-24 rounded-full bg-gradient-to-br from-[#141315] to-[#272528] mb-6 flex items-center justify-center shadow-[0_0_40px_rgba(255,137,171,0.2)] border border-[#ff89ab]/10">
             <ListMusic className="w-10 h-10 text-[#ff89ab] opacity-80" />
           </div>
-          <h2 className="text-2xl md:text-3xl font-['Plus_Jakarta_Sans'] font-bold mb-3">No lists yet</h2>
+          <h2 className="text-2xl md:text-3xl font-['Inter'] font-bold mb-3">No lists yet</h2>
           <p className="text-[#aeaaad] max-w-sm mb-8 text-sm md:text-base">
             Create curated lists of your favorite businesses to organize and share your discoveries.
           </p>
@@ -98,7 +98,7 @@ export default function Lists() {
 
         {/* List Ideas */}
         <div className="list-stagger space-y-4 md:space-y-6">
-          <h3 className="font-['Plus_Jakarta_Sans'] font-bold text-lg md:text-2xl flex items-center gap-2">
+          <h3 className="font-['Inter'] font-bold text-lg md:text-2xl flex items-center gap-2">
             <span className="text-2xl md:text-3xl animate-bounce">💡</span> List Ideas
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">

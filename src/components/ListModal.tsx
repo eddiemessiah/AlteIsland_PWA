@@ -103,7 +103,7 @@ export default function ListModal() {
           >
             <div className="p-6">
               <div className="flex justify-between items-center mb-6">
-                <h2 className="font-['Plus_Jakarta_Sans'] text-xl font-bold flex items-center gap-2">
+                <h2 className="font-['Inter'] text-xl font-bold flex items-center gap-2">
                   <Bookmark className="w-5 h-5 text-[#ff89ab]" />
                   Save to List
                 </h2>

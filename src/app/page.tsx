@@ -37,7 +37,7 @@ export default function Home() {
             <span className="text-[#ffb155] font-bold tracking-[0.2em] uppercase text-[10px] md:text-xs flex items-center gap-2 mb-3">
               <Sparkles className="w-3 h-3" /> Diaspora Connected
             </span>
-            <h1 className="font-['Plus_Jakarta_Sans'] text-5xl md:text-7xl font-black tracking-tighter leading-[1.1] mb-2">
+            <h1 className="font-['Inter'] text-5xl md:text-7xl font-black tracking-tighter leading-[1.1] mb-2">
               The Vibe <br />
               <span className="bg-gradient-to-r from-[#ff89ab] via-[#ffb155] to-[#00e3fd] bg-clip-text text-transparent">
                 Curated
@@ -56,7 +56,7 @@ export default function Home() {
         {/* Hot Right Now Section */}
         <section className="home-card">
           <div className="flex justify-between items-end mb-6">
-            <h2 className="font-['Plus_Jakarta_Sans'] text-2xl font-bold">Hot Right Now</h2>
+            <h2 className="font-['Inter'] text-2xl font-bold">Hot Right Now</h2>
             <Link href="/hot" className="text-[#00e3fd] text-xs font-bold flex items-center gap-1 uppercase tracking-widest hover:text-white transition-colors">
               View All <ArrowRight className="w-3 h-3" />
             </Link>
@@ -75,7 +75,7 @@ export default function Home() {
                 <div className="flex justify-between items-end">
                   <div>
                     <span className="bg-[#ffb155] text-[#0f0e10] text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded-md mb-2 inline-block">Event</span>
-                    <h3 className="font-['Plus_Jakarta_Sans'] text-2xl font-bold text-white mb-1 group-hover:text-[#ff89ab] transition-colors">Afro Nation Preview</h3>
+                    <h3 className="font-['Inter'] text-2xl font-bold text-white mb-1 group-hover:text-[#ff89ab] transition-colors">Afro Nation Preview</h3>
                     <p className="text-[#aeaaad] text-xs flex items-center gap-1 font-medium"><MapPin className="w-3 h-3" /> Eko Atlantic City</p>
                   </div>
                   <div className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center group-hover:bg-[#ff89ab] transition-colors">
@@ -97,7 +97,7 @@ export default function Home() {
                 <div className="flex justify-between items-end">
                   <div>
                     <span className="bg-[#00e3fd] text-[#0f0e10] text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded-md mb-2 inline-block">New Spot</span>
-                    <h3 className="font-['Plus_Jakarta_Sans'] text-2xl font-bold text-white mb-1 group-hover:text-[#00e3fd] transition-colors">RSVP Lagos</h3>
+                    <h3 className="font-['Inter'] text-2xl font-bold text-white mb-1 group-hover:text-[#00e3fd] transition-colors">RSVP Lagos</h3>
                     <p className="text-[#aeaaad] text-xs flex items-center gap-1 font-medium"><MapPin className="w-3 h-3" /> Victoria Island</p>
                   </div>
                   <div className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center group-hover:bg-[#00e3fd] transition-colors">
@@ -112,7 +112,7 @@ export default function Home() {
         {/* Curated Lists */}
         <section className="home-card">
           <div className="flex justify-between items-end mb-6">
-            <h2 className="font-['Plus_Jakarta_Sans'] text-2xl font-bold">Curated Lists</h2>
+            <h2 className="font-['Inter'] text-2xl font-bold">Curated Lists</h2>
             <Link href="/list" className="text-[#ff89ab] text-xs font-bold flex items-center gap-1 uppercase tracking-widest hover:text-white transition-colors">
               Explore <ArrowRight className="w-3 h-3" />
             </Link>
@@ -132,7 +132,7 @@ export default function Home() {
                     +12
                   </div>
                 </div>
-                <h3 className="font-['Plus_Jakarta_Sans'] font-bold text-lg mb-1 group-hover:text-[#ffb155] transition-colors">
+                <h3 className="font-['Inter'] font-bold text-lg mb-1 group-hover:text-[#ffb155] transition-colors">
                   {idx === 0 ? 'Best Amala Joints' : idx === 1 ? 'Hidden Rooftops' : 'Late Night Bites'}
                 </h3>
                 <p className="text-[#aeaaad] text-xs">Curated by <span className="text-white">@alteking</span></p>
@@ -152,7 +152,7 @@ export default function Home() {
               </div>
             </div>
 
-            <h2 className="text-4xl md:text-6xl font-black font-['Plus_Jakarta_Sans'] tracking-tight max-w-3xl leading-tight">
+            <h2 className="text-4xl md:text-6xl font-black font-['Inter'] tracking-tight max-w-3xl leading-tight">
               Flowing <br /> <span className="bg-gradient-to-r from-[#00e3fd] to-[#ffb155] bg-clip-text text-transparent">Beyond Borders</span>
             </h2>
             
@@ -182,7 +182,7 @@ export default function Home() {
               <div className="w-16 h-16 rounded-full bg-[#00e3fd]/20 text-[#00e3fd] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                 <Navigation className="w-8 h-8" />
               </div>
-              <h2 className="font-['Plus_Jakarta_Sans'] text-2xl md:text-3xl font-bold mb-2 text-center text-white">Explore the Full Directory</h2>
+              <h2 className="font-['Inter'] text-2xl md:text-3xl font-bold mb-2 text-center text-white">Explore the Full Directory</h2>
               <p className="text-[#aeaaad] text-sm text-center max-w-sm">Find verified businesses, read community reviews, and discover the heartbeat of the city.</p>
             </div>
           </Link>

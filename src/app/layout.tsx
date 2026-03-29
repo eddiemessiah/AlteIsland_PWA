@@ -1,10 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Plus_Jakarta_Sans, Manrope } from "next/font/google";
+import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
 import AppShell from "@/components/AppShell";
 import AuthProvider from "@/components/AuthProvider";
 
-const plusJakarta = Plus_Jakarta_Sans({
+const inter = Inter({
   subsets: ["latin"],
   variable: "--font-headline",
 });
@@ -35,7 +35,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className={`${plusJakarta.variable} ${manrope.variable} antialiased bg-gradient-to-b from-[#F2863E] via-[#FFC7D5] to-[#BCB0FF] text-white min-h-screen overflow-x-hidden selection:bg-[#ff89ab]/30`}>
+      <body className={`${inter.variable} ${manrope.variable} antialiased bg-gradient-to-b from-[#F2863E] via-[#FFC7D5] to-[#BCB0FF] text-white min-h-screen overflow-x-hidden selection:bg-[#ff89ab]/30`}>
         {/* Persistent Grain Overlay */}
         <div className="fixed inset-0 glass-grain z-[60] pointer-events-none mix-blend-overlay"></div>
         <AuthProvider>

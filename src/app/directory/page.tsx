@@ -71,7 +71,7 @@ export default function Directory() {
 
       <header className="sticky top-0 z-50 bg-transparent/80 backdrop-blur-xl border-b border-white/5 px-6 py-4">
         <div className="flex justify-between items-center mb-4 md:justify-start md:gap-6">
-          <h1 className="text-xl font-black bg-gradient-to-r from-[#ff89ab] to-[#ffb155] bg-clip-text text-transparent font-['Plus_Jakarta_Sans']">
+          <h1 className="text-xl font-black bg-gradient-to-r from-[#ff89ab] to-[#ffb155] bg-clip-text text-transparent font-['Inter']">
             Directory
           </h1>
           <Link href="/directory/add" className="w-8 h-8 rounded-full bg-[#00e3fd]/20 text-[#00e3fd] flex items-center justify-center hover:bg-[#00e3fd] hover:text-[#0f0e10] transition-colors border border-[#00e3fd]/50">
@@ -112,7 +112,7 @@ export default function Directory() {
       <main className="px-6 space-y-6 max-w-5xl mx-auto mt-4">
         
         <div className="flex justify-between items-end mb-2">
-          <h2 className="font-['Plus_Jakarta_Sans'] text-xl font-bold">Trending Near You</h2>
+          <h2 className="font-['Inter'] text-xl font-bold">Trending Near You</h2>
           <span className="text-[#ffb155] text-xs font-bold flex items-center gap-1 uppercase tracking-widest">
             <MapPin className="w-3 h-3" /> Lagos
           </span>
@@ -145,7 +145,7 @@ export default function Directory() {
               <div className="flex-1 py-1 flex flex-col justify-between">
                 <div>
                   <div className="flex justify-between items-start">
-                    <h3 className="font-['Plus_Jakarta_Sans'] font-bold text-lg leading-tight group-hover:text-[#00e3fd] transition-colors">
+                    <h3 className="font-['Inter'] font-bold text-lg leading-tight group-hover:text-[#00e3fd] transition-colors">
                       {item.name}
                     </h3>
                     <div className="flex gap-1">

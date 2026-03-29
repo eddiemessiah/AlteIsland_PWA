@@ -39,7 +39,7 @@ export default function Profile() {
       <div className="absolute top-1/2 -right-24 w-64 h-64 bg-[#00e3fd]/10 rounded-full blur-[100px] pointer-events-none -z-10 animate-liquid-blob"></div>
 
       <header className="fixed top-0 w-full z-50 bg-transparent/80 backdrop-blur-xl border-b border-white/5 px-6 py-4 flex justify-between items-center">
-        <h1 className="text-xl font-black bg-gradient-to-r from-[#ff89ab] to-[#ffb155] bg-clip-text text-transparent font-['Plus_Jakarta_Sans']">
+        <h1 className="text-xl font-black bg-gradient-to-r from-[#ff89ab] to-[#ffb155] bg-clip-text text-transparent font-['Inter']">
           Profile
         </h1>
         {profile && (
@@ -66,12 +66,12 @@ export default function Profile() {
               />
               <div className="absolute -bottom-4 -right-4 bg-[#141315] border border-white/10 px-4 py-2 rounded-full flex items-center gap-2 shadow-xl">
                 <Crown className="w-4 h-4 text-[#ffb155]" />
-                <span className="font-bold text-sm text-[#ffb155] font-['Plus_Jakarta_Sans']">{profile.afro_points} PTS</span>
+                <span className="font-bold text-sm text-[#ffb155] font-['Inter']">{profile.afro_points} PTS</span>
               </div>
             </div>
             
             <div className="text-center md:text-left mt-4 md:mt-0 flex-1">
-              <h1 className="font-['Plus_Jakarta_Sans'] font-extrabold text-4xl md:text-5xl tracking-tighter mb-2">
+              <h1 className="font-['Inter'] font-extrabold text-4xl md:text-5xl tracking-tighter mb-2">
                 {profile.full_name || profile.username || 'Afro Explorer'}
               </h1>
               <p className="text-[#00e3fd] font-bold tracking-[0.2em] uppercase text-xs mb-6">Verified Member</p>
@@ -95,7 +95,7 @@ export default function Profile() {
         ) : (
           /* Logged Out State */
           <section className="profile-stagger text-center md:text-left">
-            <h1 className="font-['Plus_Jakarta_Sans'] font-extrabold text-4xl md:text-6xl tracking-tighter mb-4 leading-tight">
+            <h1 className="font-['Inter'] font-extrabold text-4xl md:text-6xl tracking-tighter mb-4 leading-tight">
               Welcome to <span className="bg-gradient-to-r from-[#ff89ab] to-[#ffb155] bg-clip-text text-transparent">Afro Club</span>
             </h1>
             <p className="text-[#aeaaad] text-lg md:text-xl max-w-2xl font-light leading-relaxed mb-8 mx-auto md:mx-0">
@@ -113,7 +113,7 @@ export default function Profile() {
         <section className="profile-stagger">
           <div className="mb-6">
             <span className="text-[#00e3fd] font-bold tracking-[0.2em] uppercase text-[10px] md:text-xs">Features</span>
-            <h2 className="font-['Plus_Jakarta_Sans'] text-2xl md:text-3xl font-bold mt-2">Earn Afro Points</h2>
+            <h2 className="font-['Inter'] text-2xl md:text-3xl font-bold mt-2">Earn Afro Points</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">
@@ -131,7 +131,7 @@ export default function Profile() {
                 </div>
               </div>
               <div className="relative z-20 mt-auto">
-                <h3 className="text-2xl md:text-3xl font-['Plus_Jakarta_Sans'] font-bold mb-2">Vote Hot or Not <span className="text-[#ffb155]">+5 PTS</span></h3>
+                <h3 className="text-2xl md:text-3xl font-['Inter'] font-bold mb-2">Vote Hot or Not <span className="text-[#ffb155]">+5 PTS</span></h3>
                 <p className="text-[#aeaaad] text-sm md:text-base max-w-sm">Influence the global rankings. Set the trends for the community in real-time and earn points for every vote.</p>
               </div>
             </div>
@@ -141,7 +141,7 @@ export default function Profile() {
               <div className="w-16 h-16 rounded-full bg-[#00e3fd]/20 flex items-center justify-center mb-6">
                 <ListIcon className="text-[#00e3fd] w-8 h-8" />
               </div>
-              <h3 className="text-xl md:text-2xl font-['Plus_Jakarta_Sans'] font-bold mb-3">Create Lists</h3>
+              <h3 className="text-xl md:text-2xl font-['Inter'] font-bold mb-3">Create Lists</h3>
               <p className="text-[#aeaaad] text-sm md:text-base">Curate your favorite spots, tracks, and moments into shared collections.</p>
             </div>
           </div>
