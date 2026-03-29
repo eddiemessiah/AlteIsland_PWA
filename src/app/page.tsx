@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import { ArrowRight, MapPin, Sparkles, Navigation } from "lucide-react";
+import { ArrowRight, MapPin, Sparkles, Navigation, Globe, Map } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -18,6 +18,12 @@ export default function Home() {
     );
   }, []);
 
+  const listImages = [
+    ["1514525253161-7a46d19cd819", "1555396273-367ea4eb4db5"],
+    ["1566737236500-c8ac43014a67", "1441986300917-64674bd600d8"],
+    ["1552566626-52f8b828add9", "1520006403909-838d6b92c22e"]
+  ];
+
   return (
     <div className="min-h-screen bg-[#0f0e10] text-white font-['Manrope'] pb-32" ref={scrollRef}>
       
@@ -29,7 +35,7 @@ export default function Home() {
         <div className="max-w-5xl mx-auto flex justify-between items-end mb-8">
           <div>
             <span className="text-[#ffb155] font-bold tracking-[0.2em] uppercase text-[10px] md:text-xs flex items-center gap-2 mb-3">
-              <Sparkles className="w-3 h-3" /> Live from Lagos
+              <Sparkles className="w-3 h-3" /> Diaspora Connected
             </span>
             <h1 className="font-['Plus_Jakarta_Sans'] text-5xl md:text-7xl font-black tracking-tighter leading-[1.1] mb-2">
               The Vibe <br />
@@ -113,25 +119,58 @@ export default function Home() {
           </div>
           
           <div className="flex overflow-x-auto no-scrollbar gap-4 pb-4">
-            {[1, 2, 3].map((item) => (
-              <div key={item} className="w-64 shrink-0 rounded-2xl p-5 bg-[#141315] border border-white/5 hover:bg-white/[0.02] transition-colors group cursor-pointer">
+            {[0, 1, 2].map((idx) => (
+              <div key={idx} className="w-64 shrink-0 rounded-2xl p-5 bg-[#141315] border border-white/5 hover:bg-white/[0.02] transition-colors group cursor-pointer">
                 <div className="flex -space-x-3 mb-4">
                   <div className="w-10 h-10 rounded-full bg-[#272528] border-2 border-[#141315] flex items-center justify-center overflow-hidden">
-                    <Image src={`https://images.unsplash.com/photo-${1514525253161 + item}?w=100&q=80`} width={40} height={40} alt="Spot" className="object-cover w-full h-full" />
+                    <Image src={`https://images.unsplash.com/photo-${listImages[idx][0]}?w=100&q=80`} width={40} height={40} alt="Spot" className="object-cover w-full h-full" />
                   </div>
                   <div className="w-10 h-10 rounded-full bg-[#272528] border-2 border-[#141315] flex items-center justify-center overflow-hidden">
-                    <Image src={`https://images.unsplash.com/photo-${1555396273 + item}?w=100&q=80`} width={40} height={40} alt="Spot" className="object-cover w-full h-full" />
+                    <Image src={`https://images.unsplash.com/photo-${listImages[idx][1]}?w=100&q=80`} width={40} height={40} alt="Spot" className="object-cover w-full h-full" />
                   </div>
                   <div className="w-10 h-10 rounded-full bg-[#ffb155] border-2 border-[#141315] flex items-center justify-center text-[#0f0e10] text-[10px] font-bold">
                     +12
                   </div>
                 </div>
                 <h3 className="font-['Plus_Jakarta_Sans'] font-bold text-lg mb-1 group-hover:text-[#ffb155] transition-colors">
-                  {item === 1 ? 'Best Amala Joints' : item === 2 ? 'Hidden Rooftops' : 'Late Night Bites'}
+                  {idx === 0 ? 'Best Amala Joints' : idx === 1 ? 'Hidden Rooftops' : 'Late Night Bites'}
                 </h3>
                 <p className="text-[#aeaaad] text-xs">Curated by <span className="text-white">@alteking</span></p>
               </div>
             ))}
+          </div>
+        </section>
+
+        {/* Flowing Beyond Borders Section */}
+        <section className="home-card relative overflow-hidden rounded-[3rem] p-1 md:p-1.5 animate-border-glow shadow-2xl mt-8">
+          <div className="absolute inset-0 bg-gradient-to-r from-[#ff89ab] via-[#ffb155] to-[#00e3fd] bg-flowing-gradient opacity-80" />
+          <div className="relative z-10 bg-[#0f0e10]/80 backdrop-blur-3xl rounded-[2.8rem] p-8 md:p-16 text-center space-y-8 flex flex-col items-center">
+            
+            <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[#00e3fd] to-[#ffb155] p-1 mx-auto mb-4 animate-spin" style={{ animationDuration: '8s' }}>
+              <div className="w-full h-full rounded-full bg-[#141315] flex items-center justify-center">
+                <Globe className="w-10 h-10 text-[#00e3fd] animate-pulse" />
+              </div>
+            </div>
+
+            <h2 className="text-4xl md:text-6xl font-black font-['Plus_Jakarta_Sans'] tracking-tight max-w-3xl leading-tight">
+              Flowing <br /> <span className="bg-gradient-to-r from-[#00e3fd] to-[#ffb155] bg-clip-text text-transparent">Beyond Borders</span>
+            </h2>
+            
+            <p className="text-[#aeaaad] text-lg md:text-xl font-medium max-w-2xl mx-auto leading-relaxed">
+              From Berlin to London, Paris, and the entire African Diaspora. We are uniting creators, businesses, and communities into one seamless digital experience.
+            </p>
+
+            <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
+              <span className="px-6 py-3 rounded-full bg-[#272528]/80 border border-[#00e3fd]/30 text-white font-bold text-sm flex items-center gap-2 backdrop-blur-xl">
+                <Map className="w-4 h-4 text-[#00e3fd]" /> Berlin
+              </span>
+              <span className="px-6 py-3 rounded-full bg-[#272528]/80 border border-[#ffb155]/30 text-white font-bold text-sm flex items-center gap-2 backdrop-blur-xl">
+                <Map className="w-4 h-4 text-[#ffb155]" /> London
+              </span>
+              <span className="px-6 py-3 rounded-full bg-[#272528]/80 border border-[#ff89ab]/30 text-white font-bold text-sm flex items-center gap-2 backdrop-blur-xl">
+                <Map className="w-4 h-4 text-[#ff89ab]" /> Paris
+              </span>
+            </div>
           </div>
         </section>
 

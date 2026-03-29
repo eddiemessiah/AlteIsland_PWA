@@ -3,7 +3,8 @@
 import { useEffect, useState } from "react";
 import gsap from "gsap";
 import Image from "next/image";
-import { Search, MapPin, Navigation, Compass, Flame, Loader2 } from "lucide-react";
+import Link from "next/link";
+import { Search, MapPin, Navigation, Compass, Flame, Loader2, Plus } from "lucide-react";
 import { createClient } from "@/utils/supabase/client";
 
 interface Business {
@@ -67,9 +68,14 @@ export default function Directory() {
       <div className="fixed top-0 inset-x-0 h-64 bg-gradient-to-b from-[#ff89ab]/10 to-transparent pointer-events-none -z-10"></div>
 
       <header className="sticky top-0 z-50 bg-[#0f0e10]/80 backdrop-blur-xl border-b border-white/5 px-6 py-4">
-        <h1 className="text-xl font-black bg-gradient-to-r from-[#ff89ab] to-[#ffb155] bg-clip-text text-transparent font-['Plus_Jakarta_Sans'] mb-4">
-          Directory
-        </h1>
+        <div className="flex justify-between items-center mb-4">
+          <h1 className="text-xl font-black bg-gradient-to-r from-[#ff89ab] to-[#ffb155] bg-clip-text text-transparent font-['Plus_Jakarta_Sans']">
+            Directory
+          </h1>
+          <Link href="/directory/add" className="w-8 h-8 rounded-full bg-[#00e3fd]/20 text-[#00e3fd] flex items-center justify-center hover:bg-[#00e3fd] hover:text-[#0f0e10] transition-colors border border-[#00e3fd]/50">
+            <Plus className="w-5 h-5" />
+          </Link>
+        </div>
         
         {/* Search Bar */}
         <div className="relative">

@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import BottomNav from "./BottomNav";
 import DesktopNav from "./DesktopNav";
 import PWAInstallPrompt from "./PWAInstallPrompt";
-import { Music } from "lucide-react";
+import { Music, Play } from "lucide-react";
 
 const FallingCrystals = () => {
   const [crystals, setCrystals] = useState<any[]>([]);
@@ -47,6 +47,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const [showSplash, setShowSplash] = useState(true);
   const [isEntering, setIsEntering] = useState(false);
   const [showSpotify, setShowSpotify] = useState(false);
+  const [isSpotifyMinimized, setIsSpotifyMinimized] = useState(false);
 
   const videoRef = useRef<HTMLVideoElement>(null);
   const oceanAudioRef = useRef<HTMLAudioElement>(null);
@@ -54,7 +55,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const handleEnter = () => {
     setIsEntering(true);
     
-    // Play audio synchronously on click (fixes Mobile Safari blocking un-triggered audio)
+    // Play audio synchronously on click
     if (oceanAudioRef.current) {
       oceanAudioRef.current.volume = 0.5;
       oceanAudioRef.current.play().catch(e => console.log("Audio play blocked:", e));
@@ -70,7 +71,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       setIsEntering(false);
     }, 2500);
 
-    // Fade in the Spotify widget 6 seconds after hitting Enter
+    // Fade in the Spotify widget
     setTimeout(() => {
       setShowSpotify(true);
     }, 6000);
@@ -78,7 +79,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
 
   return (
     <>
-      {/* Hidden audio element in the DOM for mobile support */}
       <audio 
         ref={oceanAudioRef} 
         src="https://actions.google.com/sounds/v1/water/waves_crashing_on_rock_beach.ogg" 
@@ -95,7 +95,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           >
             {/* Festival Vibe: Radial Outward Waves */}
             <div className="absolute inset-0 z-0 flex items-center justify-center overflow-hidden pointer-events-none mix-blend-screen">
-               {/* 4 layered radial waves pulsing outwards */}
                <div className="absolute w-[80vw] h-[80vw] md:w-[60vw] md:h-[60vw] rounded-full bg-gradient-to-tr from-[#ff89ab] via-[#ffb155] to-[#00e3fd] blur-[100px] animate-radial-wave" />
                <div className="absolute w-[80vw] h-[80vw] md:w-[60vw] md:h-[60vw] rounded-full bg-gradient-to-tr from-[#00e3fd] via-[#ff89ab] to-[#ffb155] blur-[100px] animate-radial-wave delay-1000" />
                <div className="absolute w-[80vw] h-[80vw] md:w-[60vw] md:h-[60vw] rounded-full bg-gradient-to-tr from-[#ffb155] via-[#00e3fd] to-[#ff89ab] blur-[100px] animate-radial-wave delay-2000" />
@@ -130,7 +129,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                 Connecting the Diaspora
               </p>
 
-              {/* Secure HTML5 Video background button to replace broken Giphy link */}
               <motion.button 
                 initial={{ opacity: 0, y: 30, scale: 0.8 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -153,7 +151,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
               </motion.button>
             </motion.div>
 
-            {/* The Opener: User-Provided GIF Portal */}
             <AnimatePresence>
               {isEntering && (
                 <motion.div
@@ -173,7 +170,6 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                     playsInline
                   />
                   
-                  {/* Expanding Neon Portal Ring */}
                   <motion.div
                     initial={{ scale: 0, opacity: 1, borderWidth: "50px" }}
                     animate={{ scale: [1, 5, 20], opacity: [1, 1, 0], borderWidth: ["50px", "20px", "2px"] }}
@@ -194,16 +190,20 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         <BottomNav />
         <PWAInstallPrompt />
 
-        {/* Global Spotify Music Player Overlay (Appears 6 seconds after entry) */}
+        {/* Global Spotify Music Player Overlay */}
         <AnimatePresence>
-          {showSpotify && (
+          {showSpotify && !isSpotifyMinimized && (
             <motion.div
               initial={{ opacity: 0, y: 50, scale: 0.9 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.5, y: 50 }}
               transition={{ type: "spring", bounce: 0.5, duration: 0.8 }}
               className="fixed bottom-[100px] md:bottom-24 right-4 md:right-8 z-50 w-80 rounded-2xl bg-[#141315]/80 backdrop-blur-3xl border border-[#ff89ab]/30 p-2 shadow-[0_10px_40px_rgba(255,137,171,0.2)]"
             >
-              <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-[#272528] flex items-center justify-center border border-white/10 z-10 hover:bg-[#ff89ab] transition-colors cursor-pointer" onClick={() => setShowSpotify(false)}>
+              <div 
+                className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-[#272528] flex items-center justify-center border border-white/10 z-10 hover:bg-[#ff89ab] transition-colors cursor-pointer" 
+                onClick={() => setIsSpotifyMinimized(true)}
+              >
                 <span className="text-white text-xs font-bold">✕</span>
               </div>
               <div className="flex items-center gap-2 mb-2 px-2 pt-1 text-[#00e3fd] animate-pulse">
@@ -220,6 +220,21 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
                 loading="lazy"
               />
+            </motion.div>
+          )}
+
+          {/* Minimized Beaming Spotify Icon */}
+          {showSpotify && isSpotifyMinimized && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              whileHover={{ scale: 1.1 }}
+              exit={{ opacity: 0, scale: 0.5 }}
+              onClick={() => setIsSpotifyMinimized(false)}
+              className="fixed bottom-[100px] md:bottom-24 right-4 md:right-8 z-50 w-14 h-14 rounded-full bg-[#1DB954] flex items-center justify-center shadow-[0_0_30px_rgba(29,185,84,0.5)] cursor-pointer overflow-hidden border-2 border-[#141315]"
+            >
+              <div className="absolute inset-0 rounded-full animate-ping opacity-30 bg-[#1DB954]" style={{ animationDuration: '3s' }}></div>
+              <Play className="w-6 h-6 text-white ml-1 relative z-10" />
             </motion.div>
           )}
         </AnimatePresence>
